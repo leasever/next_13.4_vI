@@ -11,6 +11,7 @@ import { BsCart } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
 import { useSelector } from "react-redux";
+import MenuMobile from "./menu/MenuMobile";
 
 const Header = () => {
   const [show, setShow] = useState("translate-y-0");
@@ -48,14 +49,7 @@ const Header = () => {
         </Link>
         <Menu />
 
-        {/* {mobileMenu && (
-          <MenuMobile
-            showCatMenu={showCatMenu}
-            setShowCatMenu={setShowCatMenu}
-            setMobileMenu={setMobileMenu}
-            categories={categories}
-          />
-        )} */}
+        {mobileMenu && <MenuMobile />}
 
         <div className="flex items-center gap-2 text-black">
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
