@@ -12,15 +12,11 @@ import ChatMessages from "./ChatMessages";
 const Chat = () => {
   return (
     <>
-      <Accordion
-        type="single"
-        collapsible
-        className="relative bg-white z-40 shadow"
-      >
-        <AccordionItem value="item-1">    
-          <div className="fixed right-8 w-80 bottom-8 bg-black border border-gray-200 rounded-md overflow-hidden">
-            <div className="w-full h-full flex flex-col">
-              <AccordionTrigger className="px-6 border-b border-zinc-300  bg-black">
+      <Accordion type="single" collapsible className="relative z-[9999] ">
+        <AccordionItem value="item-1">
+          <div className="fixed right-8 w-80 bottom-8  border border-white rounded-md overflow-hidden ">
+            <div className="w-full h-full flex flex-col top-0 bg-black/75 bg-opacity-50 backdrop-filter backdrop-blur-md shadow-2xl">
+              <AccordionTrigger className="px-6 border-b">
                 <ChatHeader />
               </AccordionTrigger>
               <AccordionContent>
