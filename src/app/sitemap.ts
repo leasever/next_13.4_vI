@@ -6,7 +6,7 @@ import { Category } from "@/models/category.model";
 export default async function sitemap() {
   const { data: productData } = await getProducts();
   const { data: categoryData } = await getCategories();
-
+  console.log(" clienturl ", CLIENT_URL);
   const products = productData.map((product: Product) => ({
     url: `${CLIENT_URL}/catalogue/product/${product.attributes.slug}`,
     lastModified: new Date(),
