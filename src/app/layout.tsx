@@ -10,6 +10,11 @@ const inter = Nunito({
   variable: "--font-nunito",
 }); 
 
+export const metadata = {
+  title: "ShoeStore - Home",
+  description: "Your shoe store",
+};
+
 export default function RootLayout({
   children,
 }: {

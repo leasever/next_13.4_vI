@@ -23,7 +23,7 @@ function ProductCard({ attributes }: { attributes: AttributesProduct }) {
         <div className="p-4 text-black/[0.9]">
           <h2 className="text-lg font-medium">{attributes.name}</h2>
           <div className="flex items-center text-black/[0.5]">
-            <p className="mr-2 text-lg font-semibold">S/{attributes.price}</p>
+            <p className="mr-2 text-lg  font-semibold">S/{attributes.price}</p>
 
             {attributes.original_price && (
               <>

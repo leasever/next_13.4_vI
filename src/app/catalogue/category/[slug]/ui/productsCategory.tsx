@@ -3,7 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import { Products } from "@/models";
 import { Category } from "@/models/category.model";
 import { FC, useEffect, useState } from "react";
-import { getProdutsPerCategory } from "../../services";
+import { getProdutsPerCategory } from "../../../services";
 const maxResult = 3;
 
 interface Props {
@@ -27,8 +27,8 @@ const ProductsCategory: FC<Props> = ({ dataProducts, category }) => {
   };
 
   return (
-    <>
-      <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
+    <div className="md:py-20">
+      <div className="text-center max-w-[800px] mx-auto  md:mt-0 ">
         <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
           {categoryName}
         </div>
@@ -63,8 +63,7 @@ const ProductsCategory: FC<Props> = ({ dataProducts, category }) => {
           </button>
         </div>
       )}
-    
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import { getProduct, getRelatedProducts } from "@/app/catalogue/services";
 import { Metadata } from "next";
-import ProductDetails from "./productDetails";
+import ProductDetails from "./ui/productDetails";
 
 interface Props {
   params: {

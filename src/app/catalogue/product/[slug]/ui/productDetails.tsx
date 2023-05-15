@@ -1,15 +1,15 @@
 "use client";
-import { FC, useState } from "react";
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { getDiscountedPricePercentage } from "@/utils/helper";
+import RelatedProducts from "@/components/RelatedProducts";
 import { Product } from "@/models";
 import { addToCart } from "@/store/cartSlice";
-import { IoMdHeartEmpty } from "react-icons/io";
-import { ToastContainer } from "react-toastify";
-import { useDispatch } from "react-redux";
-import RelatedProducts from "@/components/RelatedProducts";
+import { getDiscountedPricePercentage } from "@/utils/helper";
 import { notifySuccess } from "@/utils/notify-manager";
+import { FC, useState } from "react";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 interface Props {
   product: Product;
@@ -25,8 +25,7 @@ const ProductDetails: FC<Props> = ({ product, products }) => {
   return (
     <>
       <ToastContainer />
-
-      <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
+      <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px] md:py-20 ">
         <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
           <ProductDetailsCarousel data={attributes.image.data} />
         </div>
@@ -134,7 +133,6 @@ const ProductDetails: FC<Props> = ({ product, products }) => {
           </div>
         </div>
       </div>
-
       <RelatedProducts products={products} />
     </>
   );
