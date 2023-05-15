@@ -32,7 +32,7 @@ export default function SubMenu() {
               return (
                 <Link
                   key={id}
-                  href={`/category/${category.slug}`}
+                  href={`/catalogue/category/${category.slug}`}
                   onClick={() => setShowCatMenu(false)}
                 >
                   <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
