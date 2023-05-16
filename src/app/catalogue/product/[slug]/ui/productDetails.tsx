@@ -2,7 +2,7 @@
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
 import RelatedProducts from "@/components/RelatedProducts";
 import { Product } from "@/models";
-import { addToCart } from "@/store/cartSlice";
+import { addToCart } from "@/store/cart-slice";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 import { notifySuccess } from "@/utils/notify-manager";
 import { FC, useState } from "react";
