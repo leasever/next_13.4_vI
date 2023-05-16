@@ -1,5 +1,5 @@
 "use client";
-import HeroBanner from "@/components/HeroBanner";
+import HeroBanner from "@/components/banner/HeroBanner";
 import PageTitle from "@/components/PageTitle";
 import Wrapper from "@/components/Wrapper";
 
