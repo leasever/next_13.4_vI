@@ -25,12 +25,13 @@ const ProductDetailsCarousel = ({ data }: Props) => {
         className="productCarousel"
       >
         {data?.map((img: CarouselCard) => (
-          <img
-            key={img.id}
-            src={img.attributes.url}
-            alt={img.attributes.name}
-            loading="eager"
-          />
+          <div className="aspect-[16/7]" key={img.id}>
+            <img
+              src={img.attributes.url}
+              alt={img.attributes.name}
+              loading="eager"
+            />
+          </div>
         ))}
       </Carousel>
     </div>

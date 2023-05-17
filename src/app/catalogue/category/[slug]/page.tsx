@@ -1,5 +1,5 @@
 import { getCategory, getProdutsPerCategory } from "@/app/catalogue/services";
-import ProductsCategory from "./ui/productsCategory";
+import ProductsCategory from "./ui/products-details";
 import { Metadata } from "next";
 
 interface Props {
@@ -11,10 +11,9 @@ interface Props {
 export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
-  const category = await getCategory(slug);
-
+  const {data} = await getCategory(slug);
   return {
-    title: category.attributes.name,
+    title: data[0].attributes.name
   };
 }
 
@@ -26,7 +25,7 @@ export default async function CategoryPage({ params: { slug } }: Props) {
 
   return (
     <>
-      <ProductsCategory dataProducts={products} category={category} />
+      <ProductsCategory products={products} category={category} />
     </>
   );
 }
