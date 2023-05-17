@@ -10,7 +10,6 @@ function ProductCard({ attributes }: { attributes: AttributesProduct }) {
       <Link
         href={`/catalogue/product/${attributes.slug}`}
         className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
-        rel="preload"
       >
         <Image
           width={500}

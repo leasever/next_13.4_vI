@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const notifySuccess = (message: string) => {
   return toast.success(`Éxito. ${message}`, {
-    position: "bottom-right",
+    position: "bottom-left",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

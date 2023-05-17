@@ -1,33 +1,53 @@
 "use client";
+import { useState } from "react";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
 import RelatedProducts from "@/components/RelatedProducts";
 import { Product } from "@/models";
 import { addToCart } from "@/store/cart-slice";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 import { notifySuccess } from "@/utils/notify-manager";
-import { FC, useState } from "react";
-import { IoMdHeartEmpty } from "react-icons/io";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { useDispatch } from "react-redux";
-import { ToastContainer } from "react-toastify";
 
 interface Props {
   product: Product;
   products: Product[];
 }
 
-const ProductDetails: FC<Props> = ({ product, products }) => {
+const ProductDetails: React.FC<Props> = ({ product, products }) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [showError, setShowError] = useState(false);
   const dispatch = useDispatch();
   const { attributes } = product;
+
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      setShowError(true);
+      document.getElementById("sizesGrid")?.scrollIntoView({
+        block: "center",
+        behavior: "smooth",
+      });
+    } else {
+      dispatch(
+        addToCart({
+          ...product,
+          selectedSize,
+          oneQuantityPrice: attributes.price,
+        })
+      );
+      notifySuccess("Producto agregado");
+    }
+  };
 
   return (
     <div className="md:py-20">
       <ToastContainer />
       <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]  ">
         <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
-          <ProductDetailsCarousel data={attributes.image.data} />
+          <ProductDetailsCarousel data={attributes?.image.data} />
         </div>
         <div className="flex-[1] py-3">
           <div className="text-[34px] font-semibold mb-2 leading-tight">
@@ -61,7 +81,9 @@ const ProductDetails: FC<Props> = ({ product, products }) => {
             Incluido de impuestos
           </div>
 
-          <div className="text-md font-medium text-black/[0.5] mb-20">{`(También incluye todos los deberes aplicables)`}</div>
+          <div className="text-md font-medium text-black/[0.5] mb-20">
+            (También incluye todos los deberes aplicables)
+          </div>
 
           <div className="mb-10">
             <div className="flex justify-between mb-2">
@@ -98,24 +120,7 @@ const ProductDetails: FC<Props> = ({ product, products }) => {
 
           <button
             className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
-            onClick={() => {
-              if (!selectedSize) {
-                setShowError(true);
-                document.getElementById("sizesGrid")?.scrollIntoView({
-                  block: "center",
-                  behavior: "smooth",
-                });
-              } else {
-                dispatch(
-                  addToCart({
-                    ...product,
-                    selectedSize,
-                    oneQuantityPrice: attributes.price,
-                  })
-                );
-                notifySuccess("Producto agregado");
-              }
-            }}
+            onClick={handleAddToCart}
           >
             Agregar al carrito
           </button>

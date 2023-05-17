@@ -29,6 +29,7 @@ const ProductDetailsCarousel = ({ data }: Props) => {
             key={img.id}
             src={img.attributes.url}
             alt={img.attributes.name}
+            loading="eager"
           />
         ))}
       </Carousel>

@@ -48,7 +48,9 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
               return;
             }
 
-            const queue = encoder.encode(text);
+            const transformedText = transformText(text); // Función para convertir los enlaces de texto en enlaces HTML
+
+            const queue = encoder.encode(transformedText);
             controller.enqueue(queue);
             counter++;
           } catch (error) {
@@ -65,4 +67,10 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     },
   });
   return stream;
+}
+
+function transformText(text: string): string {
+  const regex = /\[(.*?)\]\((.*?)\)/g;
+  const transformedText = text.replace(regex, '<a href="$2">$1</a>');
+  return transformedText;
 }

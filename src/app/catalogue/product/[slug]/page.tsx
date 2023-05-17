@@ -1,6 +1,7 @@
 import { getProduct, getRelatedProducts } from "@/app/catalogue/services";
+
 import { Metadata } from "next";
-import ProductDetails from "./ui/productDetails";
+import ProductDetails from "./ui/product-details";
 
 interface Props {
   params: {
@@ -8,22 +9,19 @@ interface Props {
   };
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: Props): Promise<Metadata> {
-  const product = await getProduct(slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { data } = await getProduct(params.slug);
   return {
-    title: product.attributes.name,
+    title: data[0].attributes.name,
   };
 }
 
-export default async function ProductPage({ params: { slug } }: Props) {
-  const product = await getProduct(slug);
-  const products = await getRelatedProducts(product);
-
-  return (
-    <>
-      <ProductDetails product={product} products={products} />
-    </>
+export default async function ProductPage({ params }: Props) {
+  const { data } = await getProduct(params.slug);
+  const { data: products } = await getRelatedProducts(
+    params.slug,
+    data[0].attributes.categories.data[0].id
   );
+
+  return <ProductDetails product={data[0]} products={products} />;
 }

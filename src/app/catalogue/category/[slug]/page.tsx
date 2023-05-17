@@ -12,16 +12,18 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const category = await getCategory(slug);
+
   return {
     title: category.attributes.name,
   };
 }
 
 export default async function CategoryPage({ params: { slug } }: Props) {
-  const maxResult = 3;
-  const page = 1;
-  const products = await getProdutsPerCategory(slug, page, maxResult);
-  const category = await getCategory(slug);
+  const [category, products] = await Promise.all([
+    getCategory(slug),
+    getProdutsPerCategory(slug, 1, 3),
+  ]);
+
   return (
     <>
       <ProductsCategory dataProducts={products} category={category} />

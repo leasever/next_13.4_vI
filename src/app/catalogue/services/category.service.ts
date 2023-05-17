@@ -2,9 +2,8 @@ import { Products } from "@/models";
 import { Categories, Category } from "@/models/category.model";
 import { fetchDataFromApi } from "@/utils/api";
 
-export const getCategories = async (): Promise<Categories> => {
-  const data = await fetchDataFromApi(`/api/categories?populate=*`);
-  return data;
+export const getCategories = (): Promise<Categories> => {
+  return fetchDataFromApi(`/api/categories?populate=*`);
 };
 
 export const getCategory = async (slug: string): Promise<Category> => {
