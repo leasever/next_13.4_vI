@@ -1,6 +1,11 @@
-import { getCategory, getProdutsPerCategory } from "@/app/catalogue/services";
-import ProductsCategory from "./ui/products-details";
+import {
+  getCategories,
+  getCategory,
+  getProdutsPerCategory,
+} from "@/app/catalogue/services";
 import { Metadata } from "next";
+import ProductsCategory from "./ui/products-details";
+export const dynamicParams = true;
 
 interface Props {
   params: {
@@ -11,10 +16,16 @@ interface Props {
 export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
-  const {data} = await getCategory(slug);
+  const { data } = await getCategory(slug);
   return {
-    title: data[0].attributes.name
+    title: data[0].attributes.name,
   };
+}
+
+export async function generateStaticParams() {
+  const categories = await getCategories();
+  const paths = categories.data.map((c) => ({ slug: c.attributes.slug }));
+  return paths;
 }
 
 export default async function CategoryPage({ params: { slug } }: Props) {

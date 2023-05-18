@@ -14,10 +14,8 @@ const Providers: FC<ProvidersProps> = ({ children }) => {
   const queryClient = new QueryClient();
   return (
     <>
-
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-      
           <MessagesProvider>{children}</MessagesProvider>
         </QueryClientProvider>
       </Provider>
