@@ -1,7 +1,6 @@
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/ui/PageTitle";
 import Wrapper from "@/components/Wrapper";
 import { Metadata } from "next";
-Wrapper;
 export const metadata: Metadata = {
   title: "Catálogo de categorías",
   description: "Todos nuestras categorías",

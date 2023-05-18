@@ -1,6 +1,6 @@
 "use client";
-import Pagination from "@/components/Pagination";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/product/ProductCard";
+import Pagination from "@/components/ui/Pagination";
 import { Products } from "@/models";
 import { Categories } from "@/models/category.model";
 import { FC, useEffect, useState } from "react";

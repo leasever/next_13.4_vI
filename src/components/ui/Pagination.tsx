@@ -22,7 +22,7 @@ const Pagination: FC<Props> = ({
         disabled={isLoading || pageIndex === 1}
         onClick={onPreviousPage}
       >
-        Previous
+        Anterior
       </button>
 
       <span className="font-bold">{`${pageIndex} of ${pageCount}`}</span>
@@ -32,13 +32,19 @@ const Pagination: FC<Props> = ({
         disabled={isLoading || pageIndex === pageCount}
         onClick={onNextPage}
       >
-        Next
+        Siguiente
       </button>
 
       {isLoading && (
         <div className="absolute top-0 left-0 w-full h-full bg-white/[0.5] flex flex-col gap-5 justify-center items-center">
-          <img src="/logo.svg" width={150} />
-          <span className="text-2xl font-medium">Loading...</span>
+          <img
+            src="/logo.svg"
+            width={150}
+            alt="spinner"
+            loading="lazy"
+            decoding="async"
+          />
+          <span className="text-2xl font-medium">Cargando...</span>
         </div>
       )}
     </div>

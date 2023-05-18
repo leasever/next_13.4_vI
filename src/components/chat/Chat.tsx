@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import ChatMessages from "../ChatMessages";
+import ChatMessages from "./ChatMessages";
 import ChatHeader from "./ChatHeader";
 import ChatInput from "./ChatInput";
 

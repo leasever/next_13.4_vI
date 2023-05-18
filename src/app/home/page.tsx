@@ -1,5 +1,5 @@
 import HeroBanner from "@/components/banner/HeroBanner";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/ui/PageTitle";
 import Wrapper from "@/components/Wrapper";
 
 export default function HomePage() {

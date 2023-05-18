@@ -5,8 +5,8 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
-import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
-import RelatedProducts from "@/components/RelatedProducts";
+import ProductDetailsCarousel from "@/components/product/ProductDetailsCarousel";
+import RelatedProducts from "@/components/product/RelatedProducts";
 import { Product } from "@/models";
 import { addToCart } from "@/store/cart-slice";
 import { getDiscountedPricePercentage } from "@/utils/helper";
