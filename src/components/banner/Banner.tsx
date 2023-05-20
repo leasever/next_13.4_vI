@@ -11,7 +11,6 @@ export default function Banner({ id, url }: Props) {
       <div className="aspect-[16/7]  ">
         <Image
           src={`/${url}`}
-          decoding="async"
           alt={`${url}`}
           width={1360}
           height={595}

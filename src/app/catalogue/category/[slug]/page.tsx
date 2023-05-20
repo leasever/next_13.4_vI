@@ -5,7 +5,6 @@ import {
 } from "@/app/catalogue/services";
 import { Metadata } from "next";
 import ProductsCategory from "./ui/products-details";
-export const dynamicParams = true;
 
 interface Props {
   params: {

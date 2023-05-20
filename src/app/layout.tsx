@@ -2,8 +2,7 @@ import Header from "@/components/Header";
 import Providers from "@/components/Providers";
 import Chat from "@/components/chat/Chat";
 import localFont from "next/font/local";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "react-toastify/dist/ReactToastify.css";
+import { getCategories } from "./catalogue/services";
 import "./globals.css";
 
 const nunito = localFont({
@@ -17,17 +16,19 @@ export const metadata = {
   description: "Your shoe store",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { data, meta } = await getCategories();
+
   return (
     <html lang="es" className={`${nunito.className}`}>
       <Providers>
         <body>
           <Chat />
-          <Header />
+          <Header data={data} meta={meta} />
           {children}
         </body>
       </Providers>

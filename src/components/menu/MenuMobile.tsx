@@ -1,32 +1,22 @@
-import { getCategories } from "@/app/catalogue/services";
 import { Categories } from "@/models/category.model";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
-const data = [
+const links = [
   { id: 1, name: "Home", url: "/" },
   { id: 2, name: "About", url: "/about" },
   { id: 3, name: "Categories", subMenu: true },
   { id: 4, name: "Contact", url: "/contact" },
 ];
 
-const MenuMobile = () => {
+const MenuMobile = ({ data }: Categories) => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
-  const [categories, setCategories] = useState<Categories>();
-
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  const fetchCategories = async () => {
-    const data = await getCategories();
-    setCategories(data);
-  };
+  
   return (
     <ul className="flex flex-col md:hidden font-bold absolute top-[50px] left-0 w-full h-[cal(100vh-50px)] bg-white border-t text-black">
-      {data.map((item) => {
+      {links.map((item) => {
         return (
           <React.Fragment key={item.id}>
             {!!item?.subMenu ? (
@@ -40,7 +30,7 @@ const MenuMobile = () => {
                 </div>
                 {showCatMenu && (
                   <ul className="bg-black/[0.05] -mx-5 mt-4 -mb-4">
-                    {categories?.data.map(
+                    {data.map(
                       ({ attributes: category, id }: any) => {
                         return (
                           <Link

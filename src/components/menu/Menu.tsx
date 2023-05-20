@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import SubMenu from "./SubMenu";
+import { Categories } from "@/models/category.model";
 
 const linkData = [
   { id: 1, name: "Home", url: "/" },
@@ -9,14 +10,14 @@ const linkData = [
   { id: 4, name: "Contact", url: "/contact" },
 ];
 
-const Menu = () => {
+const Menu = ({ data, meta }: Categories) => {
   return (
     <ul className="hidden md:flex items-center gap-8 font-medium text-black">
       {linkData.map((item) => {
         return (
           <React.Fragment key={item.id}>
             {!!item?.subMenu ? (
-              <SubMenu />
+              <SubMenu data={data} meta={meta} />
             ) : (
               <li className="cursor-pointer ">
                 <Link href={`${item.url}`}>{item.name}</Link>

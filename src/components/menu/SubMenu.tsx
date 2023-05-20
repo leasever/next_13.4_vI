@@ -1,22 +1,11 @@
-import { getCategories } from "@/app/catalogue/services";
 import { Categories, Category } from "@/models/category.model";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
-export default function SubMenu() {
+export default function SubMenu( {data} : Categories) {
   const [showCatMenu, setShowCatMenu] = useState(false);
-  const [categories, setCategories] = useState<Categories>();
-
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  const fetchCategories = async () => {
-    const data = await getCategories();
-    setCategories(data);
-  };
-
+  
   return (
     <>
       <li
@@ -28,7 +17,7 @@ export default function SubMenu() {
         <BsChevronDown size={14} />
         {showCatMenu && (
           <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
-            {categories?.data.map(({ attributes: category, id }: Category) => {
+            {data.map(({ attributes: category, id }: Category) => {
               return (
                 <Link
                   key={id}

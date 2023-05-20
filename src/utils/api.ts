@@ -7,7 +7,6 @@ export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
     headers: {
       Authorization: "Bearer " + STRAPI_API_TOKEN,
     },
-    next: { revalidate: 10 },
   };
 
   const res = await fetch(`${API_URL}${endpoint}`, options);

@@ -1,7 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Message } from "@/lib/validators/message";
-import { notifyWarning } from "@/utils/notify-manager";
 import { CornerDownLeft, Loader2 } from "lucide-react";
 import { nanoid } from "nanoid";
 import { FC, HTMLAttributes, useRef, useState } from "react";
@@ -28,7 +27,7 @@ const ChatInput: FC<ChatInputProps> = ({ className, ...props }) => {
         sendMessage(message);
         setInput("");
       } else {
-        notifyWarning("El mensaje no puede estar vacío.");
+        return;
       }
     }
   };
