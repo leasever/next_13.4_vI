@@ -18,7 +18,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function page({ params: { slug, page } }: Props) {
+export default async function CategoryPage({ params: { slug, page } }: Props) {
   const products = await getProdutsPerCategory(slug, page, 3);
   const { data: category } = await getCategory(slug);
   const { data, meta } = products;

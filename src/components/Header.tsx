@@ -14,7 +14,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import MenuMobile from "./menu/MenuMobile";
 
-const Header = ( {data,meta} : Categories) => {
+const Header = ({ data, meta }: Categories) => {
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -53,9 +53,9 @@ const Header = ( {data,meta} : Categories) => {
             loading="eager"
           />
         </Link>
-        <Menu data={data} meta={meta}/>
+        <Menu data={data} meta={meta} />
 
-        {mobileMenu && <MenuMobile data={data} meta={meta}/>}
+        {mobileMenu && <MenuMobile data={data} meta={meta} />}
 
         <div className="flex items-center gap-2 text-black">
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">

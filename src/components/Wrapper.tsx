@@ -1,5 +1,3 @@
-"use client";
-
 const Wrapper = ({ children, className }: any) => {
   return (
     <div

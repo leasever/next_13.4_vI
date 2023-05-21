@@ -1,5 +1,4 @@
-"use client";
-import { AttributesProduct, Product } from "@/models";
+import { AttributesProduct } from "@/models";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 import Image from "next/image";
 import Link from "next/link";
