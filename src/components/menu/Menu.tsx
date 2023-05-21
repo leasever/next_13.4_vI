@@ -1,7 +1,7 @@
+import { Categories } from "@/models/category.model";
 import Link from "next/link";
 import React from "react";
 import SubMenu from "./SubMenu";
-import { Categories } from "@/models/category.model";
 
 const linkData = [
   { id: 1, name: "Home", url: "/" },

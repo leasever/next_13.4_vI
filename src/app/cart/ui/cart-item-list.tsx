@@ -1,4 +1,4 @@
-import CartItem from "@/components/chat/CartItem";
+import CartItem from "@/components/CartItem";
 import { CartItemInterface } from "@/models/cart.model";
 import React from "react";
 

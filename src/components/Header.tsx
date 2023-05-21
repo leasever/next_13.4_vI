@@ -6,13 +6,13 @@ import Wrapper from "./Wrapper";
 import Link from "next/link";
 import Menu from "./menu/Menu";
 
+import { Categories } from "@/models/category.model";
 import { BiMenuAltRight } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import MenuMobile from "./menu/MenuMobile";
-import { Categories } from "@/models/category.model";
 
 const Header = ( {data,meta} : Categories) => {
   const [show, setShow] = useState("translate-y-0");

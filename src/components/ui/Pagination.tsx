@@ -1,52 +1,43 @@
+import Link from "next/link";
 import { FC } from "react";
 
 interface Props {
   pageIndex: number;
   pageCount: number;
-  isLoading: boolean;
-  onPreviousPage: () => void;
-  onNextPage: () => void;
+  pageSize: number;
+  slug: string;
+  total: number;
+  name: string;
 }
 
 const Pagination: FC<Props> = ({
   pageIndex,
   pageCount,
-  isLoading,
-  onPreviousPage,
-  onNextPage,
+  pageSize,
+  slug,
+  name,
 }) => {
   return (
     <div className="flex gap-3 items-center justify-center my-16 md:my-0">
-      <button
-        className={`rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500`}
-        disabled={isLoading || pageIndex === 1}
-        onClick={onPreviousPage}
-      >
-        Anterior
-      </button>
+      <Link href={`/catalogue/${name}/${slug}/${pageIndex - 1}`}>
+        <button
+          className={`rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500`}
+          disabled={pageIndex === 1}
+        >
+          Anterior
+        </button>
+      </Link>
 
       <span className="font-bold">{`${pageIndex} of ${pageCount}`}</span>
 
-      <button
-        className={`rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500`}
-        disabled={isLoading || pageIndex === pageCount}
-        onClick={onNextPage}
-      >
-        Siguiente
-      </button>
-
-      {isLoading && (
-        <div className="absolute top-0 left-0 w-full h-full bg-white/[0.5] flex flex-col gap-5 justify-center items-center">
-          <img
-            src="/logo.svg"
-            width={150}
-            alt="spinner"
-            loading="lazy"
-            decoding="async"
-          />
-          <span className="text-2xl font-medium">Cargando...</span>
-        </div>
-      )}
+      <Link href={`/catalogue/${name}/${slug}/${pageIndex + 1}`}>
+        <button
+          className={`rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500`}
+          disabled={pageIndex === pageCount}
+        >
+          Siguiente
+        </button>
+      </Link>
     </div>
   );
 };

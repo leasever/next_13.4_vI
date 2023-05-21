@@ -1,8 +1,8 @@
 import Header from "@/components/Header";
 import Providers from "@/components/Providers";
-import Chat from "@/components/chat/Chat";
 import localFont from "next/font/local";
 import { getCategories } from "./catalogue/services";
+import ChatBotPage from "./chat/page";
 import "./globals.css";
 
 const nunito = localFont({
@@ -27,7 +27,7 @@ export default async function RootLayout({
     <html lang="es" className={`${nunito.className}`}>
       <Providers>
         <body>
-          <Chat />
+          <ChatBotPage />
           <Header data={data} meta={meta} />
           {children}
         </body>

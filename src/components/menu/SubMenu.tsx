@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
-export default function SubMenu( {data} : Categories) {
+export default function SubMenu({ data, meta }: Categories) {
   const [showCatMenu, setShowCatMenu] = useState(false);
-  
+
   return (
     <>
       <li
@@ -21,7 +21,7 @@ export default function SubMenu( {data} : Categories) {
               return (
                 <Link
                   key={id}
-                  href={`/catalogue/category/${category.slug}`}
+                  href={`/catalogue/category/${category.slug}/1`}
                   onClick={() => setShowCatMenu(false)}
                 >
                   <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
