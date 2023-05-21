@@ -5,10 +5,10 @@ import { getCategories } from "./catalogue/services";
 import "./globals.css";
 import Chat from "@/components/chat/Chat";
 
-const nunito = localFont({
-  src: "./fonts/Nunito-Regular.ttf",
+const roboto = localFont({
+  src: "./fonts/Roboto-Regular.ttf",
   display: "swap",
-  variable: "--font-nunito",
+  variable: "--font-roboto",
 });
 
 export const metadata = {
@@ -24,7 +24,7 @@ export default async function RootLayout({
   const { data, meta } = await getCategories();
 
   return (
-    <html lang="es" className={`${nunito.className}`}>
+    <html lang="es" className={`${roboto.className}`}>
       <Providers>
         <body>
           <Chat />
