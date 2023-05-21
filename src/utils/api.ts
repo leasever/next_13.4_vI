@@ -2,22 +2,24 @@ import { OpenAIStreamPayload } from "@/lib/openai-strem";
 import { API_URL, STRAPI_API_TOKEN, OPENIA_URL } from "./urls";
 import { cache } from "react";
 
-export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + STRAPI_API_TOKEN,
-    },
-    next: { revalidate: 10 },
-  };
+export const fetchDataFromApi = cache(
+  async (endpoint: string): Promise<any> => {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + STRAPI_API_TOKEN,
+      },
+      next: { revalidate: 10 },
+    };
 
-  const res = await fetch(`${API_URL}${endpoint}`, options);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    const res = await fetch(`${API_URL}${endpoint}`, options);
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await res.json();
+    return data;
   }
-  const data = await res.json();
-  return data;
-};
+);
 
 export const makePaymentRequest = async (endpoint: string, payload: any) => {
   const res = await fetch(`${API_URL}${endpoint}`, {
