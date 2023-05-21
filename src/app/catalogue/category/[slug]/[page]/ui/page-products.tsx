@@ -3,6 +3,7 @@ import PageTitle from "@/components/ui/PageTitle";
 import Pagination from "@/components/ui/Pagination";
 import { Meta, Product } from "@/models";
 import { Category } from "@/models/category.model";
+import Wrapper from "@/components/Wrapper";
 
 import { FC } from "react";
 
@@ -23,7 +24,7 @@ const PageProducts: FC<Props> = ({ data, meta, category }) => {
   } = category;
 
   return (
-    <div>
+    <div className="md:pb-20">
       <PageTitle title={name} description="" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">

@@ -16,12 +16,8 @@ export interface OpenAIStreamPayload {
   model: string;
   messages: ChatGPTMessage[];
   temperature: number;
-  top_p: number;
-  frequency_penalty: number;
-  presence_penalty: number;
   max_tokens: number;
   stream: boolean;
-  n: number;
 }
 
 export async function OpenAIStream(payload: OpenAIStreamPayload) {
@@ -48,7 +44,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
               return;
             }
 
-            const transformedText = transformText(text); // Función para convertir los enlaces de texto en enlaces HTML
+            const transformedText = transformText(text); 
 
             const queue = encoder.encode(transformedText);
             controller.enqueue(queue);
