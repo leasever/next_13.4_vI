@@ -9,7 +9,7 @@ export const fetchDataFromApi = cache(
       headers: {
         Authorization: "Bearer " + STRAPI_API_TOKEN,
       },
-      next: { revalidate: 5, dynamicParams: true },
+      next: { revalidate: 5, dynamicParams: false },
     };
 
     const res = await fetch(`${API_URL}${endpoint}`, options);
