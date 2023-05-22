@@ -1,10 +1,7 @@
 import {
-  getCategories,
-  getCategory,
-  getProdutsPerCategory,
+  getCategory
 } from "@/app/catalogue/services";
 import { Metadata } from "next";
-import ProductsCategory from "./ui/products-details";
 
 interface Props {
   params: {
