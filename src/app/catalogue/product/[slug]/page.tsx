@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// export async function generateStaticParams() {
-//   const categories = await getProducts();
-//   const paths = categories.data.map((c) => ({ slug: c.attributes.slug }));
-//   return paths;
-// }
+export async function generateStaticParams() {
+  const categories = await getProducts();
+  const paths = categories.data.map((c) => ({ slug: c.attributes.slug }));
+  return paths;
+}
 
 export default async function ProductPage({ params }: Props) {
   const { data } = await getProduct(params.slug);
