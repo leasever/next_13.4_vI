@@ -1,8 +1,6 @@
 import { OpenAIStreamPayload } from "@/lib/openai-strem";
 import { API_URL, STRAPI_API_TOKEN, OPENIA_URL } from "./urls";
 import { cache } from "react";
-export const dynamicParams = true;
-export const revalidate = 10;
 
 export const fetchDataFromApi = cache(
   async (endpoint: string): Promise<any> => {
@@ -11,6 +9,7 @@ export const fetchDataFromApi = cache(
       headers: {
         Authorization: "Bearer " + STRAPI_API_TOKEN,
       },
+      next: { revalidate: 5, dynamicParams: true },
     };
 
     const res = await fetch(`${API_URL}${endpoint}`, options);
