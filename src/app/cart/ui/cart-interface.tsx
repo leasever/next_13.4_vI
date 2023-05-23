@@ -17,7 +17,7 @@ const CartInterface = () => {
   );
 
   return (
-    <div className="w-full md:py-20">
+    <div className="w-full py-10 md:py-20">
       <Wrapper>
         {cartItems.length > 0 && (
           <>
@@ -31,8 +31,9 @@ const CartInterface = () => {
               <CartItemsList cartItems={cartItems} />
               <CartSummary subTotal={subTotal} />
             </div>
-
-            <PaymentButton items={cartItems} />
+            <div className="max-w-3xl m-auto">
+              <PaymentButton items={cartItems} />
+            </div>
           </>
         )}
 

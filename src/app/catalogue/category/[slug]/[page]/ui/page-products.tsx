@@ -3,7 +3,6 @@ import PageTitle from "@/components/ui/PageTitle";
 import Pagination from "@/components/ui/Pagination";
 import { Meta, Product } from "@/models";
 import { Category } from "@/models/category.model";
-import Wrapper from "@/components/Wrapper";
 
 import { FC } from "react";
 

@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { getCategories } from "./catalogue/services";
 import "./globals.css";
 import Chat from "@/components/chat/Chat";
+import Footer from "@/components/footer/Footer";
 
 const roboto = localFont({
   src: "./fonts/Roboto-Regular.ttf",
@@ -30,6 +31,7 @@ export default async function RootLayout({
           <Chat />
           <Header data={data} meta={meta} />
           {children}
+          <Footer />
         </body>
       </Providers>
     </html>

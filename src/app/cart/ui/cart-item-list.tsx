@@ -1,6 +1,5 @@
 import CartItem from "@/components/CartItem";
 import { CartItemInterface } from "@/models/cart.model";
-import React from "react";
 
 interface Props {
   cartItems: CartItemInterface[];

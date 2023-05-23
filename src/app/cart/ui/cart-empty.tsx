@@ -6,11 +6,9 @@ const Empty = () => {
     <div className="flex-[2] flex flex-col items-center pb-[50px] md:-mt-14">
       <Image
         src="/empty-cart.jpg"
-        width={300}
+        width={400}
         height={300}
-        className="w-[300px] md:w-[400px]"
         alt="Carrito vacío"
-        priority
       />
 
       <span className="text-xl font-bold">Tu carrito esta vacío</span>
