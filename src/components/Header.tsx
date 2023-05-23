@@ -13,6 +13,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import MenuMobile from "./menu/MenuMobile";
+import Image from "next/image";
 
 const Header = ({ data, meta }: Categories) => {
   const [show, setShow] = useState("translate-y-0");
@@ -42,17 +43,20 @@ const Header = ({ data, meta }: Categories) => {
 
   return (
     <header
-      className={`w-full h-[50px] md:h-[80px] bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}
+      className={`w-full h-[80px] bg-[#ECCD15] flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}
     >
-      <Wrapper className="h-[60px] flex justify-between items-center">
-        <Link href="/">
-          <img
-            src="/logo.svg"
-            className="w-[40px] md:w-[60px]"
+      <Wrapper className="h-[80px] flex justify-between items-center">
+        <Link href="/" className="flex flex-row items-center">
+          <Image src="/logo_1.png" width={70} height={70} alt="logo" priority />
+          <Image
+            src="/logo_2.png"
+            width={160}
+            height={70}
             alt="logo"
-            loading="eager"
+            priority
           />
         </Link>
+
         <Menu data={data} meta={meta} />
 
         {mobileMenu && <MenuMobile data={data} meta={meta} />}

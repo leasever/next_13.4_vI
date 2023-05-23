@@ -1,14 +1,14 @@
 export const dataImages = [
   {
     id: 1,
-    url: "slide-1.png",
+    url: "banner_1.jpg",
   },
   {
     id: 2,
-    url: "slide-2.png",
+    url: "banner_2.jpg",
   },
   {
     id: 3,
-    url: "slide-3.png",
+    url: "banner_3.jpg",
   },
 ];
