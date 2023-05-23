@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import Providers from "@/components/Providers";
 import localFont from "next/font/local";
 import { getCategories } from "./catalogue/services";

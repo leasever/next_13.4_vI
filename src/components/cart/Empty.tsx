@@ -22,7 +22,7 @@ const Empty = () => {
         href="/catalogue/categories"
         className="py-4 px-8 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 mt-8"
       >
-        Continue shopping
+        Seguir comprando
       </Link>
     </div>
   );

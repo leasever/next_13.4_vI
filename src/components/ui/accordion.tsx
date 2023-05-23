@@ -1,11 +1,11 @@
 "use client";
 
 import {
-  Root,
-  Item,
-  Trigger,
-  Header,
   Content,
+  Header,
+  Item,
+  Root,
+  Trigger,
 } from "@radix-ui/react-accordion";
 import { ChevronUp } from "lucide-react";
 

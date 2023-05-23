@@ -6,8 +6,9 @@ import { BiArrowBack } from "react-icons/bi";
 import Banner from "./Banner";
 import { dataImages } from "./data";
 
+const images = dataImages;
+
 function HeroBanner() {
-  const images = dataImages;
   return (
     <div className="relative text-white text-[20px] w-full max-w-[1440px] mx-auto">
       <Carousel

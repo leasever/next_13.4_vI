@@ -1,4 +1,4 @@
-import CartInterface from "./ui/cart-interface";
+import CartInterface from "./ui/interface";
 
 export default function CartPage() {
   return <CartInterface />;

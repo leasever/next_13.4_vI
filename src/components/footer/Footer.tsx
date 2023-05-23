@@ -8,14 +8,14 @@ interface Props {
   href: string;
 }
 
-const Footer = () => {
-  const icons: Props[] = [
-    { href: "https://facebook.com", icon: <FaFacebookF size={20} /> },
-    { href: "https://twitter.com", icon: <FaTwitter size={20} /> },
-    { href: "https://youtube.com", icon: <FaYoutube size={20} /> },
-    { href: "https://instagram.com", icon: <FaInstagram size={20} /> },
-  ];
+const icons: Props[] = [
+  { href: "https://facebook.com", icon: <FaFacebookF size={20} /> },
+  { href: "https://twitter.com", icon: <FaTwitter size={20} /> },
+  { href: "https://youtube.com", icon: <FaYoutube size={20} /> },
+  { href: "https://instagram.com", icon: <FaInstagram size={20} /> },
+];
 
+const Footer = () => {
   return (
     <footer className="bg-black text-white pt-14 pb-3">
       <Wrapper className="flex flex-col  md:flex-row  md:justify-between   gap-[50px] md:gap-0">
@@ -27,7 +27,6 @@ const Footer = () => {
                 alt="Logo de la empresa"
                 width={200}
                 height={200}
-                priority={false}
               />
             </div>
             <div>
@@ -36,7 +35,6 @@ const Footer = () => {
                 alt="Logo de la empresa"
                 width={250}
                 height={250}
-                priority={false}
               />
             </div>
           </div>

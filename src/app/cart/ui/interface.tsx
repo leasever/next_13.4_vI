@@ -1,12 +1,12 @@
 "use client";
 
 import Wrapper from "@/components/Wrapper";
+import Empty from "@/components/cart/Empty";
+import CartItemsList from "@/components/cart/ListItems";
+import PaymentButton from "@/components/cart/PaymenButton";
+import CartSummary from "@/components/cart/Sumary";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
-import Empty from "./cart-empty";
-import CartItemsList from "./cart-item-list";
-import CartSummary from "./cart-sumary";
-import PaymentButton from "./cart-payament-button";
 
 const CartInterface = () => {
   const { cartItems } = useSelector((state: RootState) => state.cart);
