@@ -5,6 +5,7 @@ import Empty from "@/components/cart/Empty";
 import CartItemsList from "@/components/cart/ListItems";
 import PaymentButton from "@/components/cart/PaymenButton";
 import CartSummary from "@/components/cart/Sumary";
+import PageTitle from "@/components/ui/PageTitle";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 
@@ -21,11 +22,7 @@ const CartInterface = () => {
       <Wrapper>
         {cartItems.length > 0 && (
           <>
-            <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
-              <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-                Carro de compras
-              </div>
-            </div>
+            <PageTitle title="Carro de compras" description="" />
 
             <div className="flex flex-col lg:flex-row gap-12 py-10">
               <CartItemsList cartItems={cartItems} />

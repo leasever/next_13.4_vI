@@ -28,10 +28,10 @@ export default async function RootLayout({
     <html lang="es" className={`${roboto.className}`}>
       <Providers>
         <body>
-          <Chat />
           <Header data={data} meta={meta} />
           {children}
           <Footer />
+          <Chat />
         </body>
       </Providers>
     </html>

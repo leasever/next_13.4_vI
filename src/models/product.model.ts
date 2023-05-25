@@ -30,6 +30,7 @@ export interface AttributesProduct {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  stock: number;
   image: Image;
   thumbnail: Thumbnail;
   categories: Categories;

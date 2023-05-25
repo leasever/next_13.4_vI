@@ -3,11 +3,11 @@ export interface Categories {
   meta: Meta;
 }
 
-export interface Meta {
+interface Meta {
   pagination: Pagination;
 }
 
-export interface Pagination {
+interface Pagination {
   page: number;
   pageSize: number;
   pageCount: number;
@@ -16,45 +16,71 @@ export interface Pagination {
 
 export interface Category {
   id: number;
-  attributes: Attributes2;
+  attributes: CategoryAtributes;
 }
 
-export interface Attributes2 {
+export interface CategoryAtributes {
   name: string;
   slug: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  description: string;
   products: Products;
+  image: Image;
 }
 
-export interface Products {
-  data: Datum2[];
+interface Image {
+  data: Datum[];
 }
 
-export interface Datum2 {
+interface Datum {
   id: number;
   attributes: Attributes;
 }
 
-export interface Attributes {
+interface Attributes {
   name: string;
-  subtitle: string;
-  price: number;
-  description: string;
-  size: Size;
-  original_price: number;
-  slug: string;
+  alternativeText?: any;
+  caption?: any;
+  width: number;
+  height: number;
+  formats: Formats;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl?: any;
+  provider: string;
+  provider_metadata: Providermetadata;
   createdAt: string;
   updatedAt: string;
-  publishedAt: string;
 }
 
-export interface Size {
-  data: Datum[];
+interface Formats {
+  small: Small;
+  thumbnail: Small;
 }
 
-export interface Datum {
-  size: string;
-  enabled: boolean;
+interface Small {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path?: any;
+  size: number;
+  width: number;
+  height: number;
+  provider_metadata: Providermetadata;
+}
+
+interface Providermetadata {
+  public_id: string;
+  resource_type: string;
+}
+
+interface Products {
+  data: any[];
 }

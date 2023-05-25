@@ -32,7 +32,7 @@ const RelatedProducts = ({ products }: { products: Product[] }) => {
         infinite
       >
         {products.map((product: Product) => (
-          <ProductCard key={product.id} attributes={product.attributes} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </Carousel>
     </div>

@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Product } from "@/models";
 import { addToCart } from "@/store/cart-slice";
+import { RootState } from "@/store/store";
 import { notifySuccess } from "@/utils/notify-manager";
 
 interface HandleAddToCartProps {
@@ -17,9 +18,15 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
 }) => {
   const dispatch = useDispatch();
   const { attributes } = product;
+  const { cartItems } = useSelector((state: RootState) => state.cart);
 
+  if (attributes.stock === 0) {
+    return null;
+  }
+
+  const isProductInCart = cartItems.some((item) => item.id === product.id);
   const handleAddToCart = () => {
-    if (!selectedSize) {
+    if (!selectedSize && attributes.size) {
       setShowError(true);
       document.getElementById("sizesGrid")?.scrollIntoView({
         block: "center",
@@ -42,10 +49,11 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
   return (
     <>
       <button
-        className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+        className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-10 hover:opacity-75"
         onClick={handleAddToCart}
+        disabled={isProductInCart}
       >
-        Agregar al carrito
+        {isProductInCart ? "Ya está en el carrito" : "Agregar al carrito"}
       </button>
     </>
   );

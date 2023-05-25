@@ -1,29 +1,40 @@
-import { AttributesProduct } from "@/models";
+import { Product } from "@/models";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 
 interface Props {
-  attributes: AttributesProduct;
+  product: Product;
 }
 
-export const renderPrice = ({ attributes }: Props) => {
-  const { price, original_price } = attributes;
-  const discountPercentage = getDiscountedPricePercentage(
-    original_price,
-    price
-  );
+export const renderPrice = ({ product }: Props) => {
+  const { attributes } = product;
 
   return (
     <>
-      <p className="mr-2 text-lg font-semibold">S/{price}</p>
-      {original_price && (
+      {attributes.price ? (
         <>
-          <p className="text-base font-medium line-through">
-            S/{original_price}
-          </p>
-          <p className="ml-auto text-base font-medium text-green-500">
-            {discountPercentage}% off
-          </p>
+          <p className="mr-2 text-lg font-semibold">S/{attributes.price}</p>
+          {attributes.original_price && (
+            <>
+              <p className="text-base font-medium line-through">
+                S/{attributes.original_price}
+              </p>
+              <p className="ml-auto text-base font-medium text-green-500">
+                {getDiscountedPricePercentage(
+                  attributes.original_price,
+                  attributes.price
+                )}
+                %off
+              </p>
+            </>
+          )}
         </>
+      ) : (
+        <div className="flex flex-col w-full h-28 justify-between text-left mb-10">
+          <p className="text-base ">Producto bajo pedido</p>
+          <button className="w-full py-4 rounded-lg bg-black text-white text-lg font-medium transition-transform active:scale-95  hover:opacity-75">
+            Cotizar
+          </button>
+        </div>
       )}
     </>
   );

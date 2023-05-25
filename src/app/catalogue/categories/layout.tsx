@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <Wrapper>
-      <PageTitle title={"Todos las categorías"} description={"Descripción"} />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+      <PageTitle title={"CATEGORÍAS DESTACADAS"} description={""} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 ">
         {children}
       </div>
     </Wrapper>

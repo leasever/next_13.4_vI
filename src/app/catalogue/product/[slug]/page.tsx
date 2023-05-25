@@ -1,6 +1,6 @@
 import { getProduct, getRelatedProducts } from "@/app/catalogue/services";
 import { Metadata } from "next";
-import ProductDetails from "./ui/product-details";
+import ProductDetails from "./ui/interface";
 
 interface Props {
   params: {
@@ -19,7 +19,7 @@ export default async function ProductPage({ params }: Props) {
   const { data } = await getProduct(params.slug);
   const { data: products } = await getRelatedProducts(
     params.slug,
-    data[0].attributes.categories.data[0].id
+    data[0].attributes.categories.data[0]?.id
   );
 
   return <ProductDetails product={data[0]} products={products} />;

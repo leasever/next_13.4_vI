@@ -15,7 +15,7 @@ export const renderSizes = ({
   setShowError,
   showError,
 }: Props) => {
-  const sizeGridItems = attributes.size.data.map((item, i) => (
+  const sizeGridItems = attributes.size?.data.map((item, i) => (
     <div
       key={i}
       className={`border rounded-md text-center py-3 font-medium ${

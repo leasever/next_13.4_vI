@@ -14,15 +14,17 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
   return (
     <>
-      <div className="mb-10">
-        {renderSizes({
-          attributes,
-          selectedSize,
-          setSelectedSize,
-          setShowError,
-          showError,
-        })}
-      </div>
+      {attributes.size && (
+        <div className="mb-10">
+          {renderSizes({
+            attributes,
+            selectedSize,
+            setSelectedSize,
+            setShowError,
+            showError,
+          })}
+        </div>
+      )}
 
       <HandleAddToCart
         product={product}
