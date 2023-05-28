@@ -18,6 +18,7 @@ export default async function sitemap() {
 
   const routes = [
     "/",
+    "/home",
     "/catalogue/products",
     "/catalogue/categories",
     "/contact",

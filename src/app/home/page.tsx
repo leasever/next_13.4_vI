@@ -1,19 +1,12 @@
-import HeroBanner from "@/components/banner/HeroBanner";
-import PageTitle from "@/components/ui/PageTitle";
-import Wrapper from "@/components/Wrapper";
-import CategoriesPage from "../catalogue/categories/page";
+import { getCategories } from "../catalogue/services";
+import PageHome from "./ui/interface";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { data: categories } = await getCategories();
+
   return (
     <>
-      <HeroBanner />
-      <Wrapper>
-        <PageTitle title={"CATEGORÍAS DESTACADAS"} description={""} />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 ">
-          {CategoriesPage()}
-        </div>
-      </Wrapper>
-      ;
+      <PageHome categories={categories} />
     </>
   );
 }

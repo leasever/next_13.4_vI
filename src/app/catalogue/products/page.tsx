@@ -7,7 +7,7 @@ export default async function ProductsPage() {
   return (
     <>
       {data.map((product) => (
-        <ProductCard key={product.id} attributes={product.attributes} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </>
   );

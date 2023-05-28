@@ -9,10 +9,10 @@ import { Categories } from "@/models/category.model";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import MenuMobile from "../menu/MenuMobile";
-import Icons from "./Icons";
+import Icons from "./Icon";
 import Logo from "./Logo";
 
-const Header = ({ data, meta }: Categories) => {
+const   Header = ({ data, meta }: Categories) => {
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);

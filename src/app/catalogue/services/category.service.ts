@@ -12,8 +12,8 @@ export const getCategory = (slug: string): Promise<Categories> => {
 
 export const getProdutsPerCategory = (
   slug: string,
-  page: number,
-  maxResult: number
+  page: string,
+  maxResult: string
 ): Promise<Products> => {
   return fetchDataFromApi(
     `/api/products?populate=*&[filters][categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${maxResult}`
