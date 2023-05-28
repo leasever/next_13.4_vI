@@ -2,6 +2,7 @@
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import ProductDetailsCarousel from "@/components/product/ProductDetailsCarousel";
 import RelatedProducts from "@/components/product/RelatedProducts";

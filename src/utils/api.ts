@@ -19,6 +19,8 @@ export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
 };
 
 export const makePaymentRequest = async (endpoint: string, payload: any) => {
+  console.log("data payload ", payload);
+
   const res = await fetch(`${API_URL}${endpoint}`, {
     method: "POST",
     headers: {
@@ -28,6 +30,7 @@ export const makePaymentRequest = async (endpoint: string, payload: any) => {
     body: JSON.stringify(payload),
   });
   const data = await res.json();
+  console.log("data pasarela de pagos ", data);
   return data;
 };
 
