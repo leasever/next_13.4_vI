@@ -1,15 +1,16 @@
 import { CartItemInterface } from "@/models/cart.model";
 import Image from "next/image";
 import DispatchItem from "./DispatchItem";
+import { QuotationItemInterface } from "@/models/quotation.model";
 
 interface Props {
-  data: CartItemInterface;
+  data: CartItemInterface | QuotationItemInterface;
 }
 
 const CartItem = ({ data }: Props) => {
   const p = data.attributes;
   return (
-    <div className="flex py-5 gap-3 md:gap-5 border-b">
+    <div className="flex py-5 gap-3 md:gap-5 border-b " >
       <div className="shrink-0 aspect-square w-[50px] md:w-[120px]">
         <Image
           src={p.thumbnail.data.attributes.url}
@@ -27,9 +28,11 @@ const CartItem = ({ data }: Props) => {
           <div className="text-sm md:text-md font-medium text-black/[0.5] block md:hidden">
             {p.subtitle}
           </div>
-          <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
-            MRP : S/{p.price}
-          </div>
+          {p.price && (
+            <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
+              MRP : S/{p.price}
+            </div>
+          )}
         </div>
         <div className="text-sm md:text-md font-medium text-black/[0.5] hidden md:block">
           {p.subtitle}

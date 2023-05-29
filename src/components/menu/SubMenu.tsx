@@ -13,10 +13,10 @@ export default function SubMenu({ data, meta }: Categories) {
         onMouseEnter={() => setShowCatMenu(true)}
         onMouseLeave={() => setShowCatMenu(false)}
       >
-        {"Category"}
+        {"Categorías"}
         <BsChevronDown size={14} />
         {showCatMenu && (
-          <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
+          <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg ">
             {data.map(({ attributes: category, id }: Category) => {
               return (
                 <Link

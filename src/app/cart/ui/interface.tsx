@@ -18,8 +18,8 @@ const CartInterface = () => {
   );
 
   return (
-    <div className="w-full py-10 md:py-20">
-      <Wrapper>
+    <>
+      <Wrapper className="pb-20">
         {cartItems.length > 0 && (
           <>
             <PageTitle title="Carro de compras" description="" />
@@ -36,7 +36,7 @@ const CartInterface = () => {
 
         {cartItems.length < 1 && <Empty />}
       </Wrapper>
-    </div>
+    </>
   );
 };
 

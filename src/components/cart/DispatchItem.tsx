@@ -1,15 +1,17 @@
 import { CartItemInterface } from "@/models/cart.model";
+import { QuotationItemInterface } from "@/models/quotation.model";
 import { removeFromCart, updateCart } from "@/store/cart-slice";
+import { removeFromQuotation, updateQuotation } from "@/store/quotation-slice";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 
 interface Props {
-  data: CartItemInterface;
+  data: CartItemInterface | QuotationItemInterface;
   value?: any;
 }
 
 export default function DispatchItem({ data }: Props) {
-  const { id, quantity } = data;
+  const { id, quantity, oneQuantityPrice } = data;
   const dispatch = useDispatch();
 
   const updateCartItem = (type: string, value: any) => {
@@ -19,7 +21,9 @@ export default function DispatchItem({ data }: Props) {
       id: id,
     };
 
-    dispatch(updateCart(payload));
+    oneQuantityPrice > 0
+      ? dispatch(updateCart(payload))
+      : dispatch(updateQuotation(payload));
   };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -74,7 +78,13 @@ export default function DispatchItem({ data }: Props) {
       )}
 
       <RiDeleteBin6Line
-        onClick={() => dispatch(removeFromCart({ id: data.id }))}
+        onClick={() =>
+          dispatch(
+            data.attributes.price
+              ? removeFromCart({ id: data.id })
+              : removeFromQuotation({ id: data.id })
+          )
+        }
         className="cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]"
       />
     </>

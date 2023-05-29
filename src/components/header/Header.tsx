@@ -36,17 +36,21 @@ const   Header = ({ data, meta }: Categories) => {
       window.removeEventListener("scroll", controlNavbar);
     };
   }, [lastScrollY]);
+  
+  const toggleMobileMenu = () => {
+    setMobileMenu(!mobileMenu);
+  };
 
   return (
     <header
-      className={`w-full h-[100px] bg-[#ECCD15] flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}
+      className={`w-full h-[100px] bg-[#ECCD15] flex items-center justify-between z-[9999] sticky top-0 transition-transform duration-300 ${show}`}
     >
       <Wrapper className="h-[100px] flex justify-between items-center">
         {Logo()}
 
         <Menu data={data} meta={meta} />
 
-        {mobileMenu && <MenuMobile data={data} meta={meta} />}
+        {mobileMenu && <MenuMobile data={data}  toggleMobileMenu={toggleMobileMenu}/>}
 
         <div className="flex items-center gap-2 text-black">
           {Icons()}

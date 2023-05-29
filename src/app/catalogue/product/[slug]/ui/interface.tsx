@@ -19,7 +19,7 @@ const ProductDetails: React.FC<Props> = ({ product, products }) => {
   const { attributes } = product;
 
   return (
-    <div className="md:py-20">
+    <>
       <ToastContainer />
       <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
         <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
@@ -34,23 +34,21 @@ const ProductDetails: React.FC<Props> = ({ product, products }) => {
             {attributes.subtitle.toUpperCase()}
           </div>
 
-          <div className="flex items-center text-black/[0.5]">
-            {renderPrice({ product })}
-          </div>
-
           {attributes.price && (
             <>
+              <div className="flex items-center text-black/[0.5]">
+                {renderPrice({ product })}
+              </div>
               <div className="text-md font-medium text-black/[0.5]">
                 Incluido de impuestos
               </div>
-
               <div className="text-md font-medium text-black/[0.5] mb-10">
                 (También incluye todos los deberes aplicables)
               </div>
-
-              <ProductActions product={product} />
             </>
           )}
+          
+          <ProductActions product={product} />
 
           <div>
             <div className="text-lg font-bold mb-5">Detalles del producto</div>
@@ -65,7 +63,7 @@ const ProductDetails: React.FC<Props> = ({ product, products }) => {
         </div>
       </div>
       {products[0] && <RelatedProducts products={products} />}
-    </div>
+    </>
   );
 };
 

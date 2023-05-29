@@ -8,8 +8,8 @@ export default function NotFound() {
         <div className="max-w-[600px] rounded-lg p-5 border border-black mx-auto flex flex-col">
           <div className="text-2xl font-bold">404 not found!</div>
 
-          <Link href="/" className="font-bold mt-5">
-            Continue Shopping
+          <Link href={"/"}>
+            <p className="font-bold mt-5">Continue Shopping</p>
           </Link>
         </div>
       </Wrapper>

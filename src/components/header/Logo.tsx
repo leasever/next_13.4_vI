@@ -5,8 +5,7 @@ export default function Logo() {
   return (
     <>
       <Link href="/home" className="flex flex-row items-center">
-        <Image src="/logo_1.png" width={70} height={70} alt="logo" />
-        <Image src="/logo_2.png" width={180} height={80} alt="logo" />
+        <Image src="/principal_logo.png" width={200} height={90} alt="logo" />
       </Link>
     </>
   );

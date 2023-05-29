@@ -21,18 +21,18 @@ const Pagination: FC<Props> = ({
     <div className="flex gap-3 items-center justify-center my-16 md:my-0">
       <Link href={`/catalogue/${name}/${slug}/${pageIndex - 1}`}>
         <button
-          className={`rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500`}
+          className={`rounded py-2 px-4 bg-[#1D1D1D] text-white disabled:bg-gray-200 disabled:text-gray-500`}
           disabled={pageIndex === 1}
         >
           Anterior
         </button>
       </Link>
 
-      <span className="font-bold">{`${pageIndex} of ${pageCount}`}</span>
+      <span className="font-bold">{`${pageIndex} de ${pageCount}`}</span>
 
       <Link href={`/catalogue/${name}/${slug}/${pageIndex + 1}`}>
         <button
-          className={`rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500`}
+          className={`rounded py-2 px-4 bg-[#1D1D1D] text-white disabled:bg-gray-200 disabled:text-gray-500`}
           disabled={pageIndex === pageCount}
         >
           Siguiente

@@ -17,25 +17,20 @@ const icons: Props[] = [
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white pt-14 pb-3">
+    <footer className="bg-[#E6E5EE] text-black pt-14 pb-3">
       <Wrapper className="flex flex-col  md:flex-row  md:justify-between   gap-[50px] md:gap-0">
         <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
           <div className="flex flex-row items-center gap-3 shrink-0 m-auto">
             <div>
-              <Image
-                src={"/logo_3.png"}
-                alt="Logo de la empresa"
-                width={200}
-                height={200}
-              />
-            </div>
-            <div>
-              <Image
-                src={"/logo_4.png"}
-                alt="Logo de la empresa"
-                width={250}
-                height={250}
-              />
+              <Link href="/home" className="flex flex-row items-center">
+                <Image
+                  src={"/logo_footer.png"}
+                  alt="Logo de la empresa"
+                  width={500}
+                  height={220}
+                  quality={100}
+                />
+              </Link>
             </div>
           </div>
         </div>
@@ -46,7 +41,7 @@ const Footer = () => {
               key={index}
               href={icon.href}
               target="_blank"
-              className="w-10 h-10 rounded-full bg-white/[0.25] flex items-center justify-center text-black hover:bg-white/[0.5] cursor-pointer"
+              className="w-10 h-10 rounded-full bg-[#E6E5EE] flex items-center justify-center text-black hover:bg-white/[0.5] cursor-pointer"
             >
               <>{icon.icon}</>
             </Link>
@@ -56,10 +51,10 @@ const Footer = () => {
 
       <Wrapper className="flex justify-between mt-10 flex-col md:flex-row gap-[10px] md:gap-0">
         <div className="flex gap-2 md:gap-5 text-center md:text-left flex-wrap justify-center">
-          <div className="text-[12px] text-white/[0.5] hover:text-white cursor-pointer">
+          <div className="text-[12px] text-black/[0.7]  hover:text-black cursor-pointer">
             Condiciones de venta
           </div>
-          <div className="text-[12px] text-white/[0.5] hover:text-white cursor-pointer">
+          <div className="text-[12px] text-black/[0.7]  hover:text-black cursor-pointer">
             Política de privacidad
           </div>
         </div>

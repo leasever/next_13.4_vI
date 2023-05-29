@@ -1,5 +1,6 @@
 import { OpenAIStreamPayload } from "@/lib/openai-strem";
 import { API_URL, OPENIA_URL, STRAPI_API_TOKEN } from "./urls";
+import { notFound } from "next/navigation";
 
 export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
   const options = {
@@ -12,15 +13,13 @@ export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
 
   const res = await fetch(`${API_URL}${endpoint}`, options);
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    notFound();
   }
   const data = await res.json();
   return data;
 };
 
 export const makePaymentRequest = async (endpoint: string, payload: any) => {
-  console.log("data payload ", payload);
-
   const res = await fetch(`${API_URL}${endpoint}`, {
     method: "POST",
     headers: {
@@ -30,7 +29,6 @@ export const makePaymentRequest = async (endpoint: string, payload: any) => {
     body: JSON.stringify(payload),
   });
   const data = await res.json();
-  console.log("data pasarela de pagos ", data);
   return data;
 };
 
