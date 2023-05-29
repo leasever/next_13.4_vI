@@ -8,7 +8,6 @@ const stripePromise = loadStripe(STRIPE_API_TOKEN as string);
 
 const PaymentButton = ({ items }: CartInterface) => {
   const [loading, setLoading] = useState(false);
-  console.log("items items ", items);
 
   const handlePayment = async () => {
     setLoading(true);
