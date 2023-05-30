@@ -3,7 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
-export default function SubMenu({ data, meta }: Categories) {
+interface Props {
+  data: Category[];
+}
+
+export default function SubMenu({ data }: Props) {
   const [showCatMenu, setShowCatMenu] = useState(false);
 
   return (

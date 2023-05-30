@@ -2,7 +2,7 @@
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/ReactToastify.min.css";
 
 import ProductDetailsCarousel from "@/components/product/ProductDetailsCarousel";
 import RelatedProducts from "@/components/product/RelatedProducts";
@@ -20,7 +20,6 @@ const ProductDetails: React.FC<Props> = ({ product, products }) => {
 
   return (
     <>
-      <ToastContainer />
       <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
         <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
           <ProductDetailsCarousel data={attributes.image.data} />
@@ -47,7 +46,7 @@ const ProductDetails: React.FC<Props> = ({ product, products }) => {
               </div>
             </>
           )}
-          
+
           <ProductActions product={product} />
 
           <div>
@@ -63,6 +62,7 @@ const ProductDetails: React.FC<Props> = ({ product, products }) => {
         </div>
       </div>
       {products[0] && <RelatedProducts products={products} />}
+      <ToastContainer />
     </>
   );
 };

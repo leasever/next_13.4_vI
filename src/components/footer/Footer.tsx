@@ -28,7 +28,7 @@ const Footer = () => {
                   alt="Logo de la empresa"
                   width={500}
                   height={220}
-                  quality={100}
+                  className="h-auto w-auto"
                 />
               </Link>
             </div>

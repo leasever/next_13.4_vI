@@ -7,7 +7,7 @@ const CartSummary: React.FC<Props> = ({ subTotal }) => {
     <div className="flex-[1]">
       <div className="text-lg font-bold">Resumen</div>
 
-      <div className="p-5 my-5 bg-black/[0.05] rounded-xl">
+      <div className="p-5 my-5 bg-black/[0.05] rounded-xl shadow-md">
         <div className="flex justify-between">
           <div className="uppercase text-md md:text-lg font-medium text-black">
             Total parcial

@@ -2,6 +2,7 @@ import { CartItemInterface } from "@/models/cart.model";
 import Image from "next/image";
 import DispatchItem from "./DispatchItem";
 import { QuotationItemInterface } from "@/models/quotation.model";
+import Link from "next/link";
 
 interface Props {
   data: CartItemInterface | QuotationItemInterface;
@@ -10,24 +11,24 @@ interface Props {
 const CartItem = ({ data }: Props) => {
   const p = data.attributes;
   return (
-    <div className="flex py-5 gap-3 md:gap-5 border-b " >
+    <div className="flex py-5 gap-3 md:gap-5 border-b ">
       <div className="shrink-0 aspect-square w-[50px] md:w-[120px]">
-        <Image
-          src={p.thumbnail.data.attributes.url}
-          alt={p.name}
-          width={120}
-          height={120}
-        />
+        <Link href={`/catalogue/product/${p.slug}`}>
+          <Image
+            src={p.thumbnail.data.attributes.url}
+            alt={p.name}
+            width={120}
+            height={120}
+          />
+        </Link>
       </div>
 
       <div className="w-full flex flex-col">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="text-lg md:text-2xl font-semibold text-black/[0.8]">
-            {p.name}
+            {p.name.toUpperCase()}
           </div>
-          <div className="text-sm md:text-md font-medium text-black/[0.5] block md:hidden">
-            {p.subtitle}
-          </div>
+
           {p.price && (
             <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
               MRP : S/{p.price}
@@ -35,14 +36,9 @@ const CartItem = ({ data }: Props) => {
           )}
         </div>
         <div className="text-sm md:text-md font-medium text-black/[0.5] hidden md:block">
-          {p.subtitle}
+          {p.subtitle.toUpperCase()}
         </div>
-
-        <div className="flex items-center justify-between mt-4">
-          <div className="flex items-center gap-2 md:gap-10 text-black/[0.5] text-sm md:text-md">
-            <DispatchItem data={data} />
-          </div>
-        </div>
+        <DispatchItem data={data} />
       </div>
     </div>
   );

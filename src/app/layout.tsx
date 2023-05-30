@@ -22,13 +22,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data, meta } = await getCategories();
+  const { data } = await getCategories();
 
   return (
     <html lang="es" className={`${roboto.className}`}>
       <Providers>
         <body>
-          <Header data={data} meta={meta} />
+          <Header data={data} />
           {children}
           <Footer />
           <Chat />

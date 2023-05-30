@@ -5,14 +5,18 @@ import Wrapper from "../Wrapper";
 
 import Menu from "../menu/Menu";
 
-import { Categories } from "@/models/category.model";
+import { Categories, Category } from "@/models/category.model";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import MenuMobile from "../menu/MenuMobile";
 import Icons from "./Icon";
 import Logo from "./Logo";
 
-const   Header = ({ data, meta }: Categories) => {
+interface Props {
+  data: Category[];
+}
+
+const Header = ({ data }: Props) => {
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -36,7 +40,7 @@ const   Header = ({ data, meta }: Categories) => {
       window.removeEventListener("scroll", controlNavbar);
     };
   }, [lastScrollY]);
-  
+
   const toggleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
   };
@@ -48,9 +52,11 @@ const   Header = ({ data, meta }: Categories) => {
       <Wrapper className="h-[100px] flex justify-between items-center">
         {Logo()}
 
-        <Menu data={data} meta={meta} />
+        <Menu data={data} />
 
-        {mobileMenu && <MenuMobile data={data}  toggleMobileMenu={toggleMobileMenu}/>}
+        {mobileMenu && (
+          <MenuMobile data={data} toggleMobileMenu={toggleMobileMenu} />
+        )}
 
         <div className="flex items-center gap-2 text-black">
           {Icons()}

@@ -37,56 +37,58 @@ export default function DispatchItem({ data }: Props) {
 
   return (
     <>
-      <div className="flex items-center gap-1">
-        <div className="font-semibold">Cantidad: </div>
-        <select
-          className="hover:text-black"
-          value={quantity}
-          onChange={handleQuantityChange}
-        >
-          {[...Array(10)].map((_, i) => {
-            const q = i + 1;
-            return (
-              <option key={q} value={q}>
-                {q}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-
-      {data.attributes.size && (
+      <div className="flex items-center justify-between mt-4">
         <div className="flex items-center gap-1">
-          <div className="font-semibold">Talla:</div>
+          <div className="font-semibold">Cantidad: </div>
           <select
             className="hover:text-black"
-            value={data.selectedSize}
-            onChange={handleSizeChange}
+            value={quantity}
+            onChange={handleQuantityChange}
           >
-            {data.attributes.size.data.map((item: any, i: any) => (
-              <option
-                key={i}
-                value={item.size}
-                disabled={!item.enabled}
-                selected={data.selectedSize === item.size}
-              >
-                {item.size}
-              </option>
-            ))}
+            {[...Array(10)].map((_, i) => {
+              const q = i + 1;
+              return (
+                <option key={q} value={q}>
+                  {q}
+                </option>
+              );
+            })}
           </select>
         </div>
-      )}
 
-      <RiDeleteBin6Line
-        onClick={() =>
-          dispatch(
-            data.attributes.price
-              ? removeFromCart({ id: data.id })
-              : removeFromQuotation({ id: data.id })
-          )
-        }
-        className="cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]"
-      />
+        {data.attributes.size && (
+          <div className="flex items-center gap-1">
+            <div className="font-semibold">Talla:</div>
+            <select
+              className="hover:text-black"
+              value={data.selectedSize}
+              onChange={handleSizeChange}
+            >
+              {data.attributes.size.data.map((item: any, i: any) => (
+                <option
+                  key={i}
+                  value={item.size}
+                  disabled={!item.enabled}
+                  selected={data.selectedSize === item.size}
+                >
+                  {item.size}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        <RiDeleteBin6Line
+          onClick={() =>
+            dispatch(
+              data.attributes.price
+                ? removeFromCart({ id: data.id })
+                : removeFromQuotation({ id: data.id })
+            )
+          }
+          className="cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]"
+        />
+      </div>
     </>
   );
 }
