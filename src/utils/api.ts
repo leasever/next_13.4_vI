@@ -28,6 +28,11 @@ export const makePaymentRequest = async (endpoint: string, payload: any) => {
     },
     body: JSON.stringify(payload),
   });
+
+  if (!res.ok) {
+    throw new Error("Error en la solicitud");
+  }
+
   const data = await res.json();
   return data;
 };

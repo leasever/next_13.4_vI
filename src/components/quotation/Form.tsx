@@ -76,6 +76,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
       resetForm();
     } catch (error) {
       notifyError("No se pudo enviar la cotización");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -161,7 +162,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
             value={formData.message}
             onChange={handleChange}
             minRows={3}
-            maxLength={500}
+            maxLength={250}
             required
           />
         </div>
