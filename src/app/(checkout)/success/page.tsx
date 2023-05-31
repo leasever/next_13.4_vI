@@ -7,17 +7,22 @@ const Success = () => {
     <div className="min-h-[650px] flex items-center">
       <Wrapper>
         <div className="max-w-[600px] rounded-lg p-5 border border-black mx-auto flex flex-col">
-          <div className="text-2xl font-bold">Thanks for shopping with us!</div>
+          <div className="text-2xl font-bold">
+            Gracias por comprar con nosotros!
+          </div>
           <div className="text-lg font-bold mt-2">
-            Your order has been placed successfully.
+            Su pedido ha sido realizado con éxito.
           </div>
           <div className="text-base mt-5">
-            For any product related query, drop an email to
+            Para cualquier consulta relacionada con el producto, envíe un correo
+            electrónico a
           </div>
-          <div className="underline">shoeshopcontact@shop.com</div>
+          <div className="underline">consorcio.electrica.sac@gmail.com</div>
+          <div className="text-base mt-5">Teléfono:</div>
+          <div className="underline">948125398</div>
 
           <Link href="/" className="font-bold mt-5">
-            Continue Shopping
+            Seguir comprando
           </Link>
         </div>
       </Wrapper>

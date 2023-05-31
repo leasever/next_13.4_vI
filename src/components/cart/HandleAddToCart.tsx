@@ -10,6 +10,7 @@ interface HandleAddToCartProps {
   product: Product;
   selectedSize: string;
   setShowError: (showError: boolean) => void;
+  productName?: string;
 }
 
 const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
@@ -22,14 +23,16 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
 
   const { cartItems } = useSelector((state: RootState) => state.cart);
   const { quotationItems } = useSelector((state: RootState) => state.quotation);
-
+  
   if (attributes.stock === 0) {
     return null;
   }
 
-  const isProductInCart = cartItems.some((item) => item.id === product.id);
+  const isProductInCart = cartItems.some(
+    (item) => item.productId === product.id
+  );
   const isProductInQuotation = quotationItems.some(
-    (item) => item.id === product.id
+    (item) => item.productId === product.id
   );
 
   const handleAddToCart = () => {
@@ -47,11 +50,14 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
         ? addToCart({
             ...product,
             selectedSize,
+            productId: product.id,
             oneQuantityPrice: attributes.price,
           })
         : addToQuotation({
             ...product,
             selectedSize,
+            productId: product.id,
+            name: `${attributes.name} x 1`.toUpperCase(),
           })
     );
 
@@ -62,7 +68,9 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
     <>
       <button
         className={`w-full py-4 rounded-full  text-white text-lg font-medium transition-transform active:scale-95 mb-10 hover:opacity-75 ${
-          isProductInCart || isProductInQuotation ? "bg-[#656565]" : "bg-[#1D1D1D]"
+          isProductInCart || isProductInQuotation
+            ? "bg-[#656565]"
+            : "bg-[#1D1D1D]"
         }`}
         onClick={handleAddToCart}
         disabled={isProductInCart || isProductInQuotation}

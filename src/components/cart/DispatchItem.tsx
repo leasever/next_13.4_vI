@@ -11,14 +11,14 @@ interface Props {
 }
 
 export default function DispatchItem({ data }: Props) {
-  const { id, quantity, oneQuantityPrice } = data;
+  const { productId, quantity, oneQuantityPrice } = data;
   const dispatch = useDispatch();
 
   const updateCartItem = (type: string, value: any) => {
     const payload = {
       key: type,
       val: value,
-      id: id,
+      id: productId,
     };
 
     oneQuantityPrice > 0
@@ -28,7 +28,10 @@ export default function DispatchItem({ data }: Props) {
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newQuantity = parseInt(e.target.value);
+    const newName =
+      `${data.attributes.name} x ${newQuantity}`.toLocaleUpperCase();
     updateCartItem("quantity", newQuantity);
+    updateCartItem("name", newName);
   };
   const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newSize = e.target.value;
@@ -82,8 +85,8 @@ export default function DispatchItem({ data }: Props) {
           onClick={() =>
             dispatch(
               data.attributes.price
-                ? removeFromCart({ id: data.id })
-                : removeFromQuotation({ id: data.id })
+                ? removeFromCart({ id: data.productId })
+                : removeFromQuotation({ id: data.productId })
             )
           }
           className="cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]"

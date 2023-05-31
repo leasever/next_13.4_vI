@@ -13,8 +13,8 @@ export const notifySuccess = (message: string) => {
   });
 };
 
-export const notifyWarning = (message: string) => {
-  return toast.warning(`${message}`, {
+export const notifyError = (message: string) => {
+  return toast.error(`${message}`, {
     position: "bottom-right",
     autoClose: 2000,
     hideProgressBar: false,

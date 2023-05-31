@@ -4,9 +4,10 @@ export interface CartInterface {
 
 export interface CartItemInterface {
   selectedSize: string;
+  name?: string;
   oneQuantityPrice: number;
   quantity: number;
-  id: number;
+  productId: number;
   attributes: Attributes2;
 }
 

@@ -9,31 +9,38 @@ export const quotationSlice = createSlice({
   },
   reducers: {
     addToQuotation: (state, action) => {
-      const item = state.quotationItems.find(
-        (p: QuotationItemInterface) => p.id === action.payload.id
-      );
-      if (item && item.quantity > 0) {
-        item.quantity++;        
-      } else {
-        state.quotationItems.push({ ...action.payload, quantity: 1 });
-      }
+      state.quotationItems.push({
+        ...action.payload,
+        quantity: 1,
+      });
     },
+
     updateQuotation: (state, action) => {
       state.quotationItems = state.quotationItems.map((p) => {
-        if (p.id === action.payload.id) {          
+        if (p.productId === action.payload.id) {
           return { ...p, [action.payload.key]: action.payload.val };
         }
         return p;
       });
     },
+
     removeFromQuotation: (state, action) => {
       state.quotationItems = state.quotationItems.filter(
-        (p) => p.id !== action.payload.id
+        (p) => p.productId !== action.payload.id
       );
+    },
+
+    clearQuotation: (state) => {
+      state.quotationItems = initialState;
     },
   },
 });
 
-export const { addToQuotation, updateQuotation, removeFromQuotation } = quotationSlice.actions;
+export const {
+  addToQuotation,
+  updateQuotation,
+  removeFromQuotation,
+  clearQuotation,
+} = quotationSlice.actions;
 
 export default quotationSlice.reducer;

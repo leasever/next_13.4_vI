@@ -1,6 +1,9 @@
-import { QuotationItemInterface } from "@/models/quotation.model";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { makePaymentRequest } from "@/utils/api";
+import { notifyError, notifySuccess } from "@/utils/notify-manager";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import { useDispatch } from "react-redux";
+import { clearQuotation } from "@/store/quotation-slice";
 
 interface FormData {
   name: string;
@@ -8,18 +11,30 @@ interface FormData {
   phone: string;
   message: string;
 }
-interface Props {
-  cartItems: QuotationItemInterface[];
+
+export interface Quotation {
+  selectedSize: string;
+  name: string;
+  quantity: number;
+  productId: number;
 }
 
-const QuotationForm: React.FC<Props> = ({ cartItems }) => {
+interface Props {
+  quotationItems: Quotation[];
+}
+
+const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
-  console.log("cart itemde formquotes ", cartItems);
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -27,13 +42,43 @@ const QuotationForm: React.FC<Props> = ({ cartItems }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+    dispatch(clearQuotation());
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Nombre:", formData.name);
-    console.log("Email:", formData.email);
-    console.log("Teléfono:", formData.phone);
-    console.log("Mensaje:", formData.message);
-    // Resto del código para enviar la cotización
+    setLoading(true);
+
+    try {
+      await makePaymentRequest("/api/quotations", {
+        data: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          products: quotationItems,
+        },
+      });
+
+      if (formRef.current) {
+        formRef.current.reset();
+      } else {
+        console.log("formRef.current is null");
+      }
+      notifySuccess("Cotización enviada exitosamente");
+      resetForm();
+    } catch (error) {
+      notifyError("No se pudo enviar la cotización");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,6 +86,7 @@ const QuotationForm: React.FC<Props> = ({ cartItems }) => {
       <div className="text-lg font-bold">Formulario de Cotización</div>
       <form
         onSubmit={handleSubmit}
+        ref={formRef}
         className="p-5 my-5 bg-black/[0.05] rounded-xl shadow-md"
       >
         <div className="text-md md:text-lg font-medium text-black">
@@ -72,13 +118,12 @@ const QuotationForm: React.FC<Props> = ({ cartItems }) => {
             Email
           </label>
           <input
-            type="text"
+            type="email"
             id="email"
             name="email"
             className="input-field w-full"
             value={formData.email}
             onChange={handleChange}
-            pattern="[a-zA-Z0-9_%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
             maxLength={254}
             required
           />
@@ -91,19 +136,16 @@ const QuotationForm: React.FC<Props> = ({ cartItems }) => {
             Teléfono
           </label>
           <input
-            type="text"
+            type="tel"
             id="phone"
             name="phone"
             className="input-field w-full"
             value={formData.phone}
             onChange={handleChange}
-            pattern="\+\d{2} \d{9}"
             maxLength={14}
+            pattern="[0-9]+"
             required
           />
-          <span className="text-sm text-gray-500 block mt-1">
-            Ejemplo: +51 912345678
-          </span>
         </div>
         <div className="mb-4">
           <label
@@ -119,12 +161,17 @@ const QuotationForm: React.FC<Props> = ({ cartItems }) => {
             value={formData.message}
             onChange={handleChange}
             minRows={3}
-            required
             maxLength={500}
+            required
           />
         </div>
         <div className="max-w-3xl m-auto">
-          <button className="w-full py-4 rounded-full bg-[#1D1D1D] text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center">
+          <button
+            type="submit"
+            className="w-full py-4 rounded-full bg-[#1D1D1D] text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
+            disabled={loading}
+          >
+            {loading && <img src="/spinner.svg" loading="lazy" />}
             Enviar
           </button>
         </div>
