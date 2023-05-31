@@ -30,7 +30,9 @@ const SendMessageMutation = () => {
       });
 
       if (!response.ok) {
-        throw new Error();
+        const statusCode = response.status;
+        const errorMessage = await response.text();
+        throw new Error(`Server error: ${statusCode} - ${errorMessage}`);
       }
 
       return response.body;

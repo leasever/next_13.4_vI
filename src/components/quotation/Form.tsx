@@ -1,22 +1,17 @@
+import { Quotation } from "@/app/quotation/ui/interface";
+import { clearQuotation } from "@/store/quotation-slice";
 import { makePaymentRequest } from "@/utils/api";
 import { notifyError, notifySuccess } from "@/utils/notify-manager";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import TextareaAutosize from "react-textarea-autosize";
 import { useDispatch } from "react-redux";
-import { clearQuotation } from "@/store/quotation-slice";
+import TextareaAutosize from "react-textarea-autosize";
+import { InputField } from "./InputField";
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
   message: string;
-}
-
-export interface Quotation {
-  selectedSize: string;
-  name: string;
-  quantity: number;
-  productId: number;
 }
 
 interface Props {
@@ -59,10 +54,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
     try {
       await makePaymentRequest("/api/quotations", {
         data: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
+          ...formData,
           products: quotationItems,
         },
       });
@@ -76,7 +68,6 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
       resetForm();
     } catch (error) {
       notifyError("No se pudo enviar la cotización");
-      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -93,61 +84,37 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
         <div className="text-md md:text-lg font-medium text-black">
           Ingresa tus datos para continuar con la cotización:
         </div>
-        <div className="my-4">
-          <label
-            htmlFor="name"
-            className="block mb-2 text-sm font-medium text-gray-700"
-          >
-            Nombre
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="input-field w-full"
-            value={formData.name}
-            onChange={handleChange}
-            maxLength={100}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-700"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="input-field w-full"
-            value={formData.email}
-            onChange={handleChange}
-            maxLength={254}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="phone"
-            className="block mb-2 text-sm font-medium text-gray-700"
-          >
-            Teléfono
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            className="input-field w-full"
-            value={formData.phone}
-            onChange={handleChange}
-            maxLength={14}
-            pattern="[0-9]+"
-            required
-          />
-        </div>
+        <InputField
+          id="name"
+          name="name"
+          label="Nombre"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          maxLength={100}
+          required
+        />
+        <InputField
+          id="email"
+          name="email"
+          label="Email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          maxLength={254}
+          required
+        />
+        <InputField
+          id="phone"
+          name="phone"
+          label="Teléfono"
+          type="tel"
+          value={formData.phone}
+          onChange={handleChange}
+          maxLength={14}
+          pattern="[0-9]+"
+          required
+        />
         <div className="mb-4">
           <label
             htmlFor="message"
