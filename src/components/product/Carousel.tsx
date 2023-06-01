@@ -17,7 +17,7 @@ interface Props {
 
 const ProductDetailsCarousel: FC<Props> = ({ data }) => {
   return (
-    <div className="w-full  mx-auto sticky top-[50px]">
+    <div className="aspect-[16/7]  mx-auto sticky top-[50px]">
       <Carousel
         showIndicators={false}
         showStatus={false}
@@ -32,7 +32,7 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
                 width={50}
                 height={60}
                 alt={img.attributes.name}
-                priority={false}
+                priority={true}
               />
             </div>
           ))

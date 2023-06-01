@@ -11,7 +11,7 @@ export default function Banner({ id, url }: Props) {
 
   return (
     <div>
-      <div className={`aspect-[16/7]`}>
+      <div className={"aspect-[16/7]"}>
         <Image
           src={`/${url}`}
           alt={url}

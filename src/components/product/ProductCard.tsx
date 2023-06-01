@@ -10,7 +10,7 @@ interface Props {
 function ProductCard({ product }: Props) {
   const { attributes } = product;
   return (
-    <>
+    <div className="aspect-[1] ">
       <Link
         href={`/catalogue/product/${product.attributes.slug}`}
         className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
@@ -20,7 +20,7 @@ function ProductCard({ product }: Props) {
           height={500}
           src={attributes.thumbnail.data.attributes.url}
           alt={attributes.name}
-          className="m-auto"
+          priority={true}
         />
         <div className="p-4 text-black/[0.9]">
           <h2 className="text-lg font-medium">
@@ -35,7 +35,7 @@ function ProductCard({ product }: Props) {
           </div>
         </div>
       </Link>
-    </>
+    </div>
   );
 }
 
