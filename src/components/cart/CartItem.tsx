@@ -12,7 +12,7 @@ const CartItem = ({ data }: Props) => {
   const p = data.attributes;
   return (
     <div className="flex py-5 gap-3 md:gap-5 border-b ">
-      <div className="shrink-0 aspect-square w-[50px] md:w-[120px]">
+      <div className="shrink-0 aspect-square w-[50px] md:w-[120px] bg-white">
         <Link href={`/catalogue/product/${p.slug}`}>
           <Image
             src={p.thumbnail.data.attributes.url}

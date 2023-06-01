@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 
-
 export interface Quotation {
   selectedSize: string;
   name: string;
@@ -27,8 +26,12 @@ const QuotationInterface = () => {
             <PageTitle title="Cotización" description="" />
 
             <div className="flex flex-col lg:flex-row gap-12 py-10">
-              <CartItemsList cartItems={quotationItems} />
-              <QuotationForm quotationItems={quotationItems} />
+              <div className="w-full">
+                <CartItemsList cartItems={quotationItems} />
+              </div>
+              <div className="h-full sticky top-[50px]">
+                <QuotationForm quotationItems={quotationItems} />
+              </div>
             </div>
           </>
         )}

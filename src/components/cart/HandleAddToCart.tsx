@@ -77,11 +77,11 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
       >
         {isProductInCart || isProductInQuotation
           ? attributes.price
-            ? "Productos agregado"
-            : "Productos agregado"
+            ? "Producto agregado"
+            : "Producto agregado"
           : attributes.price
           ? "Agregar al carrito"
-          : "Cotizar"}
+          : "Cotizar producto"}
       </button>
     </>
   );

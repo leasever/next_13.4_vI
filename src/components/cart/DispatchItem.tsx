@@ -48,7 +48,7 @@ export default function DispatchItem({ data }: Props) {
             value={quantity}
             onChange={handleQuantityChange}
           >
-            {[...Array(10)].map((_, i) => {
+            {[...Array(50)].map((_, i) => {
               const q = i + 1;
               return (
                 <option key={q} value={q}>
