@@ -50,7 +50,10 @@ const Header = ({ data }: Props) => {
       className={`w-full h-[100px] bg-[#ECCD15] flex items-center justify-between z-[9999] sticky top-0 transition-transform duration-300 ${show}`}
     >
       <Wrapper className="h-[100px] flex justify-between items-center">
+        <div className="aspect-[16/7]">
         {Logo()}
+
+        </div>
 
         <Menu data={data} />
 
