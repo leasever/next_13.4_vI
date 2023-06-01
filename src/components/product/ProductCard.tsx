@@ -10,7 +10,7 @@ interface Props {
 function ProductCard({ product }: Props) {
   const { attributes } = product;
   return (
-    <div className="aspect-[1] ">
+    <div className="aspect-[16/7] ">
       <Link
         href={`/catalogue/product/${product.attributes.slug}`}
         className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
