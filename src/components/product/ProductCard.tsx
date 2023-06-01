@@ -10,18 +10,20 @@ interface Props {
 function ProductCard({ product }: Props) {
   const { attributes } = product;
   return (
-    <div className="aspect-[16/7] ">
+    <div>
       <Link
         href={`/catalogue/product/${product.attributes.slug}`}
         className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
       >
-        <Image
-          width={500}
-          height={500}
-          src={attributes.thumbnail.data.attributes.url}
-          alt={attributes.name}
-          priority={true}
-        />
+        <div className="aspect-[1] ">
+          <Image
+            width={500}
+            height={500}
+            src={attributes.thumbnail.data.attributes.url}
+            alt={attributes.name}
+            priority={true}
+          />
+        </div>
         <div className="p-4 text-black/[0.9]">
           <h2 className="text-lg font-medium">
             {attributes.name.toLocaleUpperCase()}
