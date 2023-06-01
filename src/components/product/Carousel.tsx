@@ -39,7 +39,7 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
         }
       >
         {data.map((img, idx) => (
-          <div className="w-full h-fulls max-w-[520px] max-h-[650px] bg-white" key={idx} >
+          <div className="w-full h-full max-w-[520px] max-h-[650px] bg-white" key={idx} >
             <Image
               src={img.attributes.url}
               alt={`${img.attributes.name} preview ${idx}`}
