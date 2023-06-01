@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getCategories } from "../catalogue/services";
+import { getCategories, getProducts } from "../catalogue/services";
 import PageHome from "./ui/interface";
 
 export const metadata: Metadata = {
@@ -9,9 +9,10 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const { data: categories } = await getCategories();
+  const { data: products } = await getProducts();
   return (
     <>
-      <PageHome categories={categories} />
+      <PageHome categories={categories} products={products} />
     </>
   );
 }
