@@ -6,17 +6,23 @@ interface Props {
 }
 
 export default function Banner({ id, url }: Props) {
+  const aspectRatio = 16 / 7;
+  const bottomSpacing = id ? "[75px]" : "[25px]";
+  const textFontSize = id ? "[30px]" : "[15px]";
+
   return (
     <div>
-      <div className="aspect-[16/7]  ">
+      <div className={`aspect-${aspectRatio}`}>
         <Image
           src={`/${url}`}
-          alt={`${url}`}
+          alt={url}
           width={1440}
           height={630}
           priority
         />
-        <div className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90 ">
+        <div
+          className={`px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald bg-white absolute bottom-${bottomSpacing} left-0 text-black/[0.9] text-${textFontSize} uppercase font-medium cursor-pointer hover:opacity-90`}
+        >
           COMPRAR
         </div>
       </div>

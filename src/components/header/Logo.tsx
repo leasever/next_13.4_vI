@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Logo() {
   return (
-    <>
+    <div className="w-[205px] h-[90px]">
       <Link href="/home" className="flex flex-row items-center">
         <Image
           src="/principal_logo.png"
@@ -11,9 +11,8 @@ export default function Logo() {
           height={90}
           alt="logo"
           priority
-          className="w-auto h-auto"
         />
       </Link>
-    </>
+    </div>
   );
 }
