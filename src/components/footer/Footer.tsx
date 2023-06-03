@@ -21,29 +21,25 @@ const Footer = () => {
       <Wrapper className="flex flex-col  md:flex-row  md:justify-between   gap-[50px] md:gap-0">
         <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
           <div className="flex flex-row items-center gap-3 shrink-0 m-auto">
-            <div className="aspect-[16/7]">
-              <Link href="/home" className="flex flex-row items-center">
-                <Image
-                  src={"/logo_footer.png"}
-                  alt="Logo de la empresa"
-                  width={500}
-                  height={220}
-                  priority={true}
-                />
-              </Link>
-            </div>
+            <Link href="/home" className="flex flex-row items-center">
+              <Image
+                src={"/logo_footer.png"}
+                alt="Logo de la empresa"
+                width={500}
+                height={220}
+                priority={true}
+                className="w-auto"
+              />
+            </Link>
           </div>
         </div>
 
         <div className="flex gap-4 justify-center md:justify-start">
           {icons.map((icon, index) => (
-            <Link
-              key={index}
-              href={icon.href}
-              target="_blank"
-              className="w-10 h-10 rounded-full bg-[#E6E5EE] flex items-center justify-center text-black hover:bg-white/[0.5] cursor-pointer"
-            >
-              <>{icon.icon}</>
+            <Link key={index} href={icon.href} target="_blank">
+              <div className="w-10 h-10 rounded-full bg-[#E6E5EE] flex items-center justify-center text-black hover:bg-white/[0.5] cursor-pointer">
+                {icon.icon}
+              </div>
             </Link>
           ))}
         </div>

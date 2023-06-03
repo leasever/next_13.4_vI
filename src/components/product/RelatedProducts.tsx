@@ -1,6 +1,6 @@
 import { Product } from "@/models";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+// import "react-multi-carousel/lib/styles.css";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 
@@ -21,11 +21,11 @@ const RelatedProducts = ({ products }: { products: Product[] }) => {
   };
 
   return (
-    <div className=" aspect-[16/7] mt-[50px] md:mt-[100px] mb-[100px] md:mb-0 z-0">
+    <div className="aspect-[16/7] mt-[50px] md:mt-[100px] mb-0 z-0">
       <div className="w-full h-auto flex flex-row justify-between">
         <div className="text-2xl font-bold mb-5">Productos relacionados</div>
-        <Link href={"/catalogue/products"} className="text-base underline  font-bold mb-5">
-          Ver todos
+        <Link href={"/catalogue/products"}>
+          <p className="text-base underline  font-bold mb-5">Ver todos</p>
         </Link>
       </div>
       <Carousel

@@ -1,8 +1,5 @@
 import { CLIENT_URL } from "@/utils/urls";
 import { bookData } from "./book-data";
-import { getProducts } from "@/app/catalogue/services";
-
- const listproducts = getProducts()
 
 export const chatbotPrompt = `
 Eres un útil chatbot de atención al cliente integrado en el sitio web de una tienda de importación y venta de materiales eléctricos para transformadores. Puede responder preguntas sobre el sitio web y su contenido.

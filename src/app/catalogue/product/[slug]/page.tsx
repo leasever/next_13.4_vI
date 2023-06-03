@@ -1,6 +1,5 @@
 import { getProduct, getRelatedProducts } from "@/app/catalogue/services";
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
 
 import ProductDetails from "./ui/interface";
 
@@ -19,22 +18,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { data } = await getProduct(params.slug);
-  if (data.length === 0) {
-    redirect("/catalogue/products");
-  }
+
   const categoryId = data[0].attributes.categories.data[0]?.id;
+  const products = categoryId
+    ? (await getRelatedProducts(params.slug, categoryId)).data
+    : [];
 
-  if (categoryId) {
-    const { data: products } = await getRelatedProducts(
-      params.slug,
-      categoryId
-    );
-    return (
-      <>
-        <ProductDetails product={data[0]} products={products} />
-      </>
-    );
-  }
-
-  return <ProductDetails product={data[0]} products={[]} />;
+  return (
+    <>
+      <ProductDetails product={data[0]} products={products} />
+    </>
+  );
 }

@@ -10,15 +10,12 @@ interface Props {
 function ProductCard({ product }: Props) {
   const { attributes } = product;
   return (
-    <div className="aspect-[4/3]">
-      <Link
-        href={`/catalogue/product/${product.attributes.slug}`}
-        className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
-      >
-        <div className="aspect-[1]">
+    <>
+      <Link href={`/catalogue/product/${product.attributes.slug}`}>
+        <div className="aspect-[1] transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer">
           <Image
-            width={500}
-            height={500}
+            width={650}
+            height={650}
             src={attributes.thumbnail.data.attributes.url}
             alt={attributes.name}
             priority={true}
@@ -37,7 +34,7 @@ function ProductCard({ product }: Props) {
           </div>
         </div>
       </Link>
-    </div>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
-'use client'; // Error components must be Client Components
- 
-import { useEffect } from 'react';
- 
+"use client";
+
+import { notFound } from "next/navigation";
+
 export default function Error({
   error,
   reset,
@@ -9,22 +9,7 @@ export default function Error({
   error: Error;
   reset: () => void;
 }) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
- 
-  return (
-    <div>
-      <h2>Algo sucedió soy error layout</h2>
-      <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </button>
-    </div>
-  );
+  console.error("Error interno: ", error);
+
+  return notFound();
 }

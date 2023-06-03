@@ -1,5 +1,7 @@
 "use client";
 
+import { notFound } from "next/navigation";
+
 export default function GlobalError({
   error,
   reset,
@@ -7,12 +9,6 @@ export default function GlobalError({
   error: Error;
   reset: () => void;
 }) {
-  return (
-    <html>
-      <body>
-        <h2>Soy el global-error!</h2>
-        <button onClick={() => reset()}>Try again</button>
-      </body>
-    </html>
-  );
+  console.error("Error global: ", error);
+  return notFound();
 }

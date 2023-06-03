@@ -3,7 +3,7 @@ import Link from "next/link";
 import Wrapper from "../Wrapper";
 
 const Empty = () => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     window.scrollTo(0, 0);
   }
   return (
@@ -15,6 +15,7 @@ const Empty = () => {
             width={250}
             height={250}
             alt="empty cart"
+            priority={true}
           />
         </div>
         <span className="text-xl font-bold">Tu carrito esta vacío</span>

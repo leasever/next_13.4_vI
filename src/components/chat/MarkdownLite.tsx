@@ -22,13 +22,10 @@ const MarkdownLite: FC<MarkdownLiteProps> = ({ text }) => {
     }
 
     parts.push(
-      <Link
-        rel="noopener noreferrer"
-        className="break-words underline underline-offset-2 text-blue-600"
-        key={linkUrl}
-        href={linkUrl}
-      >
-        {linkText}
+      <Link rel="noopener noreferrer" key={linkUrl} href={linkUrl}>
+        <span className="break-words underline underline-offset-2 text-blue-600">
+          {linkText}
+        </span>
       </Link>
     );
 

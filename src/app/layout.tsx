@@ -1,8 +1,13 @@
-import Header from "@/components/header/Header";
 import Providers from "@/components/Providers";
+import Header from "@/components/header/Header";
 import localFont from "next/font/local";
+import "react-multi-carousel/lib/styles.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-toastify/ReactToastify.min.css";
+
 import { getCategories } from "./catalogue/services";
 import "./globals.css";
+
 import Chat from "@/components/chat/Chat";
 import Footer from "@/components/footer/Footer";
 
@@ -11,11 +16,6 @@ const roboto = localFont({
   display: "swap",
   variable: "--font-roboto",
 });
-
-export const metadata = {
-  title: "ShoeStore - Home",
-  description: "Your shoe store",
-};
 
 export default async function RootLayout({
   children,

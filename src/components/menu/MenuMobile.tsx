@@ -1,4 +1,4 @@
-import { Categories, Category } from "@/models/category.model";
+import { Category } from "@/models/category.model";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -17,7 +17,6 @@ interface Props {
 
 const MenuMobile = ({ data, toggleMobileMenu }: Props) => {
   const [showCatMenu, setShowCatMenu] = useState(false);
-  
 
   return (
     <ul className="flex flex-col md:hidden font-bold absolute top-[100px] left-0 w-full h-[cal(100vh-50px)] bg-white border-t text-black ">
@@ -40,12 +39,14 @@ const MenuMobile = ({ data, toggleMobileMenu }: Props) => {
                         <Link
                           key={id}
                           href={`/catalogue/category/${category.slug}/1`}
-                          onClick={() => {
-                            setShowCatMenu(false);
-                            toggleMobileMenu();
-                          }}
                         >
-                          <li className="py-4 px-8 border-t flex justify-between">
+                          <li
+                            className="py-4 px-8 border-t flex justify-between"
+                            onClick={() => {
+                              setShowCatMenu(false);
+                              toggleMobileMenu();
+                            }}
+                          >
                             {category.name}
                             <span className="opacity-50 text-sm">{`(${category.products.data.length})`}</span>
                           </li>

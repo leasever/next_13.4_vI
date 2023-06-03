@@ -9,6 +9,7 @@ export default async function sitemap() {
   const products = productData.map((product: Product) => ({
     url: `${CLIENT_URL}/catalogue/product/${product.attributes.slug}`,
     lastModified: new Date(),
+    
   }));
 
   const categories = categoryData.map((category: Category) => ({
@@ -23,6 +24,7 @@ export default async function sitemap() {
     "/catalogue/categories",
     "/contact",
     "/about",
+    "/quotation"
   ].map((route) => ({
     url: `${CLIENT_URL}${route}`,
     lastModified: new Date(),

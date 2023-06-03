@@ -5,7 +5,7 @@ import Wrapper from "../Wrapper";
 
 import Menu from "../menu/Menu";
 
-import { Categories, Category } from "@/models/category.model";
+import { Category } from "@/models/category.model";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import MenuMobile from "../menu/MenuMobile";
@@ -50,10 +50,7 @@ const Header = ({ data }: Props) => {
       className={`w-full h-[100px] bg-[#ECCD15] flex items-center justify-between z-[9999] sticky top-0 transition-transform duration-300 ${show}`}
     >
       <Wrapper className="h-[100px] flex justify-between items-center">
-        <div className="aspect-[16/7]">
-        {Logo()}
-
-        </div>
+        <div className="aspect-[16/7]">{Logo()}</div>
 
         <Menu data={data} />
 
