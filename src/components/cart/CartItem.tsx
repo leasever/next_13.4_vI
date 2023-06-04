@@ -1,8 +1,8 @@
 import { CartItemInterface } from "@/models/cart.model";
-import Image from "next/image";
-import DispatchItem from "./DispatchItem";
 import { QuotationItemInterface } from "@/models/quotation.model";
+import Image from "next/image";
 import Link from "next/link";
+import DispatchItem from "./DispatchItem";
 
 interface Props {
   data: CartItemInterface | QuotationItemInterface;
@@ -12,7 +12,7 @@ const CartItem = ({ data }: Props) => {
   const p = data.attributes;
   return (
     <div className="flex py-5 gap-3 md:gap-5 border-b ">
-      <div className="shrink-0 aspect-square w-[50px] md:w-[120px] bg-white">
+      <div className="shrink-0 aspect-square w-[50px] h-[50px] md:h-[120px] md:w-[120px] bg-white ">
         <Link href={`/catalogue/product/${p.slug}`}>
           <Image
             src={p.thumbnail.data.attributes.url}

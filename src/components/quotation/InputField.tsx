@@ -8,6 +8,7 @@ interface InputProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   maxLength?: number;
+  minLength?: number;
   pattern?: string;
   required?: boolean;
 }
@@ -20,6 +21,7 @@ export const InputField: React.FC<InputProps> = ({
   value,
   onChange,
   maxLength,
+  minLength,
   pattern,
   required,
 }) => {
@@ -39,6 +41,7 @@ export const InputField: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
         maxLength={maxLength}
+        minLength={minLength}
         pattern={pattern}
         required={required}
       />

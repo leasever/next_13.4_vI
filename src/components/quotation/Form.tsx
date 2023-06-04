@@ -1,10 +1,9 @@
 import { Quotation } from "@/app/quotation/ui/interface";
 import { clearQuotation } from "@/store/quotation-slice";
-import { makePaymentRequest } from "@/utils/api";
-import { notifyError, notifySuccess } from "@/utils/notify-manager";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import TextareaAutosize from "react-textarea-autosize";
+import { sendMessaage } from "../../app/catalogue/services/quotation.service";
 import { InputField } from "./InputField";
 
 interface FormData {
@@ -37,40 +36,12 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const resetForm = () => {
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    dispatch(clearQuotation());
-  };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
-    try {
-      await makePaymentRequest("/api/quotations", {
-        data: {
-          ...formData,
-          products: quotationItems,
-        },
-      });
-
-      if (formRef.current) {
-        formRef.current.reset();
-      } else {
-        console.log("formRef.current is null");
-      }
-      notifySuccess("Cotización enviada exitosamente");
-      resetForm();
-    } catch (error) {
-      notifyError("No se pudo enviar la cotización");
-    } finally {
-      setLoading(false);
-    }
+    const status = await sendMessaage({ formData, quotationItems });
+    status && dispatch(clearQuotation());
+    setLoading(false);
   };
 
   return (
@@ -92,6 +63,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
           value={formData.name}
           onChange={handleChange}
           maxLength={100}
+          minLength={3}
           required
         />
         <InputField
@@ -112,6 +84,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
           value={formData.phone}
           onChange={handleChange}
           maxLength={14}
+          minLength={9}
           pattern="[0-9]+"
           required
         />
@@ -129,8 +102,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
             value={formData.message}
             onChange={handleChange}
             minRows={3}
-            maxLength={250}
-            required
+            maxLength={200}
           />
         </div>
         <div className="max-w-3xl m-auto">
