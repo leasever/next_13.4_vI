@@ -1,7 +1,7 @@
-import { QuotationItemInterface } from "@/models/quotation.model";
+import { CartItemInterface } from "@/models/cart.model";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: QuotationItemInterface[] = [];
+const initialState: CartItemInterface[] = [];
 export const quotationSlice = createSlice({
   name: "quotation",
   initialState: {

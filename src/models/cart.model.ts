@@ -3,7 +3,7 @@ export interface CartInterface {
 }
 
 export interface CartItemInterface {
-  selectedSize: string;
+  size: SizeProd[];
   name?: string;
   oneQuantityPrice: number;
   quantity: number;
@@ -16,7 +16,7 @@ interface Attributes2 {
   subtitle: string;
   price: number;
   description: string;
-  size: Size;
+  size: SizeProd[];
   original_price: number;
   slug: string;
   createdAt: string;
@@ -26,6 +26,14 @@ interface Attributes2 {
   thumbnail: Thumbnail;
   categories: Size;
 }
+
+export interface SizeProd {
+  id: number;
+  val: string;
+  price?: number;
+  quantity?: any;
+}
+
 
 interface Thumbnail {
   data: Data;

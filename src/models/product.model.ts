@@ -21,48 +21,62 @@ export interface Product {
 
 export interface AttributesProduct {
   name: string;
-  subtitle: string;
-  price: number;
+  subtitle?: any;
+  price?: any;
   description: string;
-  size: Size;
-  original_price: number;
+  original_price?: any;
   slug: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  stock: number;
+  locale: string;
+  stock?: any;
   image: Image;
   thumbnail: Thumbnail;
   categories: Categories;
+  size: Size[];
+  localizations: Localizations;
+}
+
+interface Localizations {
+  data: any[];
+}
+
+interface Size {
+  id: number;
+  val: string;
+  status: boolean;
+  quantity?: any;
 }
 
 interface Categories {
-  data: Datum3[];
+  data: Datum2[];
 }
 
-export interface Datum3 {
+interface Datum2 {
   id: number;
   attributes: Attributes3;
 }
 
-export interface Attributes3 {
+interface Attributes3 {
   name: string;
   slug: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  locale: string;
 }
 
-export interface Thumbnail {
+interface Thumbnail {
   data: Data;
 }
 
-export interface Data {
+interface Data {
   id: number;
   attributes: Attributes2;
 }
 
-export interface Attributes2 {
+interface Attributes2 {
   name: string;
   alternativeText?: any;
   caption?: any;
@@ -81,21 +95,21 @@ export interface Attributes2 {
   updatedAt: string;
 }
 
-export interface Formats2 {
-  small: Small;
-  thumbnail: Small;
+interface Formats2 {
+  small: Large;
+  thumbnail: Large;
 }
 
-export interface Image {
-  data: Datum2[];
+interface Image {
+  data: Datum[];
 }
 
-export interface Datum2 {
+interface Datum {
   id: number;
   attributes: Attributes;
 }
 
-export interface Attributes {
+interface Attributes {
   name: string;
   alternativeText?: any;
   caption?: any;
@@ -114,14 +128,14 @@ export interface Attributes {
   updatedAt: string;
 }
 
-export interface Formats {
-  small: Small;
-  thumbnail: Small;
-  large?: Small;
-  medium?: Small;
+interface Formats {
+  large: Large;
+  small: Large;
+  medium: Large;
+  thumbnail: Large;
 }
 
-export interface Small {
+interface Large {
   ext: string;
   url: string;
   hash: string;
@@ -134,16 +148,7 @@ export interface Small {
   provider_metadata: Providermetadata;
 }
 
-export interface Providermetadata {
+interface Providermetadata {
   public_id: string;
   resource_type: string;
-}
-
-export interface Size {
-  data: Datum[];
-}
-
-export interface Datum {
-  size: string;
-  enabled: boolean;
 }

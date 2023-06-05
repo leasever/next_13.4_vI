@@ -1,4 +1,4 @@
-import { Quotation } from "@/app/quotation/ui/interface";
+import { Quotation } from "@/components/quotation/Form";
 import { makePaymentRequest } from "@/utils/api";
 import { notifyError, notifySuccess } from "@/utils/notify-manager";
 

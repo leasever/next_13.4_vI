@@ -16,7 +16,11 @@ function ProductCard({ product }: Props) {
           <Image
             width={650}
             height={650}
-            src={attributes.thumbnail.data.attributes.url}
+            src={
+              attributes.thumbnail.data?.attributes.url
+                ? attributes.thumbnail.data.attributes.url
+                : "/sin_imagen.jpg"
+            }
             alt={attributes.name}
             priority={true}
           />

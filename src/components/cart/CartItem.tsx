@@ -1,11 +1,10 @@
 import { CartItemInterface } from "@/models/cart.model";
-import { QuotationItemInterface } from "@/models/quotation.model";
 import Image from "next/image";
 import Link from "next/link";
 import DispatchItem from "./DispatchItem";
 
 interface Props {
-  data: CartItemInterface | QuotationItemInterface;
+  data: CartItemInterface ;
 }
 
 const CartItem = ({ data }: Props) => {
@@ -15,7 +14,11 @@ const CartItem = ({ data }: Props) => {
       <div className="shrink-0 aspect-square w-[50px] h-[50px] md:h-[120px] md:w-[120px] bg-white ">
         <Link href={`/catalogue/product/${p.slug}`}>
           <Image
-            src={p.thumbnail.data.attributes.url}
+            src={
+              p.thumbnail.data?.attributes.url
+                ? p.thumbnail.data.attributes.url
+                : "/sin_imagen.jpg"
+            }
             alt={p.name}
             width={120}
             height={120}
@@ -36,7 +39,7 @@ const CartItem = ({ data }: Props) => {
           )}
         </div>
         <div className="text-sm md:text-md font-medium text-black/[0.5] hidden md:block">
-          {p.subtitle.toUpperCase()}
+          {p.subtitle?.toUpperCase()}
         </div>
         <DispatchItem data={data} />
       </div>

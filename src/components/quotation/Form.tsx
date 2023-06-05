@@ -1,4 +1,4 @@
-import { Quotation } from "@/app/quotation/ui/interface";
+import { SizeProd } from "@/models/cart.model";
 import { clearQuotation } from "@/store/quotation-slice";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -13,6 +13,13 @@ interface FormData {
   message: string;
 }
 
+export interface Quotation {
+  size: SizeProd[];
+  name?: string;
+  quantity: number;
+  productId: number;
+}
+
 interface Props {
   quotationItems: Quotation[];
 }
@@ -21,7 +28,6 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const dispatch = useDispatch();
-
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",

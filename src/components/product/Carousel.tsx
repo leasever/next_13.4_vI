@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
 import { Carousel } from "react-responsive-carousel";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface CarouselCard {
   id: number;
@@ -16,12 +15,25 @@ interface Props {
 }
 
 const ProductDetailsCarousel: FC<Props> = ({ data }) => {
+  if (!data) {
+    return (
+      <div className="w-full  mx-auto sticky top-[50px]">
+        <Image
+          src="/sin_imagen.jpg"
+          width={520}
+          height={650}
+          alt="Imagen no disponible"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full  mx-auto sticky top-[50px]">
       <Carousel
         showIndicators={false}
         showStatus={false}
-        animationHandler={"fade"}
+        animationHandler="fade"
         thumbWidth={50}
         className="productCarousel"
         renderThumbs={() =>

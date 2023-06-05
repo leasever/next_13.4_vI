@@ -1,8 +1,7 @@
 import { Product } from "@/models";
-import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
-import ProductCard from "./ProductCard";
 import Link from "next/link";
+import Carousel from "react-multi-carousel";
+import ProductCard from "./ProductCard";
 
 const RelatedProducts = ({ products }: { products: Product[] }) => {
   const responsive = {
@@ -35,6 +34,7 @@ const RelatedProducts = ({ products }: { products: Product[] }) => {
         draggable={false}
         autoPlay
         infinite
+        className="custom-carousel"
       >
         {products.map((product: Product) => (
           <ProductCard key={product.id} product={product} />

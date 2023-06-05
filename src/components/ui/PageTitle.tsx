@@ -5,7 +5,7 @@ interface Props {
 
 function PageTitle({ title, description }: Props) {
   return (
-    <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
+    <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[40px]">
       <div className="text-[28px] md:text-[34px] font-normal">
         {title}
       </div>

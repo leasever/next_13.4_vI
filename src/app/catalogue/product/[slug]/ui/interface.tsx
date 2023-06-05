@@ -31,7 +31,7 @@ const ProductDetails: React.FC<Props> = ({ product, products }) => {
           </div>
 
           <div className="text-lg font-semibold mb-5">
-            {attributes.subtitle.toUpperCase()}
+            {attributes.subtitle?.toUpperCase()}
           </div>
 
           {attributes.price && (
