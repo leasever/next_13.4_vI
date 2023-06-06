@@ -1,7 +1,12 @@
-import { getProduct, getRelatedProducts } from "@/app/catalogue/services";
+import {
+  getProduct,
+  getProducts,
+  getRelatedProducts,
+} from "@/app/catalogue/services";
 import { Metadata } from "next";
 
 import ProductDetails from "./ui/interface";
+import { Product } from "@/models";
 
 interface Props {
   params: {
@@ -14,6 +19,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: data[0]?.attributes.name,
   };
+}
+
+export const revalidate = 5;
+export async function generateStaticParams() {
+  const products = await getProducts();
+
+  return products.data.map(({ attributes: { slug } }: Product) => {
+    return {
+      slug,
+    };
+  });
 }
 
 export default async function ProductPage({ params }: Props) {
