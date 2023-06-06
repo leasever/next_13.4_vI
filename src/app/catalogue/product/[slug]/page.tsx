@@ -7,6 +7,8 @@ import { Metadata } from "next";
 
 import ProductDetails from "./ui/interface";
 import { Product } from "@/models";
+import ProductDetailsCarousel from "@/components/product/Carousel";
+import RelatedProducts from "@/components/product/RelatedProducts";
 
 interface Props {
   params: {
@@ -42,7 +44,11 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <>
-      <ProductDetails product={data[0]} products={products} />
+      <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
+        <ProductDetailsCarousel data={data[0].attributes.image.data} />
+        <ProductDetails product={data[0]} />
+      </div>
+      {products[0] && <RelatedProducts products={products} />}
     </>
   );
 }

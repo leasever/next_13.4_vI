@@ -1,3 +1,9 @@
+import Wrapper from "@/components/Wrapper";
+
 export default function layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <Wrapper>{children}</Wrapper>
+    </>
+  );
 }

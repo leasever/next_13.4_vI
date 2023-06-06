@@ -3,7 +3,7 @@ export interface Categories {
   meta: Meta;
 }
 
-interface Meta {
+export interface Meta {
   pagination: Pagination;
 }
 

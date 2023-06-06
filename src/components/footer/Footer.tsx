@@ -17,7 +17,7 @@ const icons: Props[] = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#E6E5EE] text-black pt-14 pb-3">
+    <footer className="bg-[#E6E5EE] text-black  pb-3">
       <Wrapper className="flex flex-col  md:flex-row  md:justify-between   gap-[50px] md:gap-0">
         <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
           <div className="flex flex-row items-center gap-3 shrink-0 m-auto">

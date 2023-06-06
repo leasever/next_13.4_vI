@@ -77,4 +77,8 @@ export const bookData = `
 <loc>${CLIENT_URL}/catalogue/category/insumos/1</loc>
 <lastmod>2023-06-05T10:24:38.918Z</lastmod>
 </url>
+<url>
+<loc>${CLIENT_URL}/catalogue/category/aisladores/1</loc>
+<lastmod>2023-06-06T08:28:43.565Z</lastmod>
+</url>
 `;

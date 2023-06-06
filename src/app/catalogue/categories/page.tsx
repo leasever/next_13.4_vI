@@ -1,8 +1,12 @@
 import { getCategories } from "../services";
-import CategoriesInterface from "./ui/interface";
+import Pagination from "../../../components/ui/PaginationButton";
 
 export default async function CategoriesPage() {
-  const { data: categories } = await getCategories();
+  const { data: categories, meta } = await getCategories();
 
-  return <>{<CategoriesInterface categories={categories} />}</>;
+  return (
+    <>
+      <Pagination meta={meta} categories={categories} itemsPerPage={2} />
+    </>
+  );
 }
