@@ -5,7 +5,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-toastify/ReactToastify.min.css";
 
 import "./globals.css";
-export const revalidate = 5;
 
 import Chat from "@/components/chat/Chat";
 import Footer from "@/components/footer/Footer";

@@ -3,17 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 function CategoryCard({ attributes }: Category) {
+  const {
+    image: { data },
+  } = attributes;
   return (
     <>
       <div className="group relative">
         <div className="relative max-h-96 w-full overflow-hidden rounded-lg bg-white  group-hover:opacity-75 ">
-            <Image
-              width={630}
-              height={400}
-              src={attributes.image.data[0].attributes.url}
-              alt={attributes.name}
-              className="w-full"
-            />
+          <Image
+            width={630}
+            height={400}
+            src={data ? data[0].attributes.url : "/sin_imagen.jpg"}
+            alt={attributes.name}
+            className="w-full"
+          />
         </div>
         <h3 className="mt-6 text-lg text-gray-500">
           <Link href={`/catalogue/category/${attributes.slug}/1`}>

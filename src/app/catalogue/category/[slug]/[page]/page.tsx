@@ -16,7 +16,7 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const { data } = await getCategory(slug);
-  const title = data[0]?.attributes?.name || "";
+  const title = (data[0]?.attributes?.name).toLocaleUpperCase() || "";
   return { title };
 }
 

@@ -18,7 +18,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { data } = await getProduct(params.slug);
   return {
-    title: data[0]?.attributes.name,
+    title: (data[0]?.attributes.name).toUpperCase(),
   };
 }
 

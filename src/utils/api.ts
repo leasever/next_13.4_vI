@@ -10,6 +10,7 @@ export const fetchDataFromApi = cache(
       headers: {
         Authorization: "Bearer " + STRAPI_API_TOKEN,
       },
+      next: { revalidate: 5 },
     };
 
     const res = await fetch(`${API_URL}${endpoint}`, options);
