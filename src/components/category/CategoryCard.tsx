@@ -12,7 +12,6 @@ function CategoryCard({ attributes }: Category) {
               height={400}
               src={attributes.image.data[0].attributes.url}
               alt={attributes.name}
-              priority={true}
               className="w-full"
             />
         </div>

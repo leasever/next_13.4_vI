@@ -22,7 +22,6 @@ function ProductCard({ product }: Props) {
                 : "/sin_imagen.jpg"
             }
             alt={attributes.name}
-            priority={true}
           />
         </div>
         <div className="p-4 text-black/[0.9]">

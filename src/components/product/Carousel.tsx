@@ -44,7 +44,6 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
               width={50}
               height={60}
               alt={img.attributes.name}
-              priority={false}
             />
           ))
         }
@@ -59,7 +58,6 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
               alt={`${img.attributes.name} preview ${idx}`}
               width={520}
               height={650}
-              priority={true}
             />
           </div>
         ))}
