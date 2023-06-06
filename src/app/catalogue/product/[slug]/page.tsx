@@ -4,7 +4,6 @@ import {
   getRelatedProducts,
 } from "@/app/catalogue/services";
 import { Metadata } from "next";
-
 import ProductDetails from "./ui/interface";
 import { Product } from "@/models";
 import ProductDetailsCarousel from "@/components/product/Carousel";
@@ -24,19 +23,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const products = await getProducts();
+  const { data } = await getProducts();
 
-  return products.data.map(({ attributes: { slug } }: Product) => {
-    return {
-      slug,
-    };
-  });
+  return data.map(({ attributes: { slug } }: Product) => ({
+    slug,
+  }));
 }
 
 export default async function ProductPage({ params }: Props) {
   const { data } = await getProduct(params.slug);
-
-  const categoryId = data[0].attributes.categories.data[0]?.id;
+  const categoryId = data[0]?.attributes.categories.data[0]?.id;
   const products = categoryId
     ? (await getRelatedProducts(params.slug, categoryId)).data
     : [];
@@ -44,10 +40,10 @@ export default async function ProductPage({ params }: Props) {
   return (
     <>
       <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
-        <ProductDetailsCarousel data={data[0].attributes.image.data} />
+        <ProductDetailsCarousel data={data[0]?.attributes.image.data} />
         <ProductDetails product={data[0]} />
       </div>
-      {products[0] && <RelatedProducts products={products} />}
+      {products.length > 0 && <RelatedProducts products={products} />}
     </>
   );
 }

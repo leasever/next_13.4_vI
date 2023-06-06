@@ -1,4 +1,4 @@
-import { chatbotPrompt } from "@/helpers/constants/chatbot-prompt";
+import { generateChatbotPrompt } from "@/helpers/constants/chatbot-prompt";
 import {
   ChatGPTMessage,
   OpenAIStream,
@@ -15,6 +15,8 @@ export async function POST(req: Request) {
     role: message.isUserMessage ? "user" : "system",
     content: message.text,
   }));
+
+  const chatbotPrompt = await generateChatbotPrompt(); // Generar el chatbot prompt aquí
 
   outboundMessages.unshift({
     role: "system",

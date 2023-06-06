@@ -18,7 +18,7 @@ const CartInterface = () => {
   );
 
   return (
-    <Wrapper className="pb-20">
+    <Wrapper>
       {cartItems.length > 0 && (
         <>
           <PageTitle title="Carro de compras" description="" />

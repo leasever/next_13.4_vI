@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Wrapper from "../Wrapper";
-
 import Menu from "../menu/Menu";
-
 import { Category } from "@/models/category.model";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
@@ -17,29 +15,32 @@ interface Props {
 }
 
 const Header = ({ data }: Props) => {
-  const [show, setShow] = useState("translate-y-0");
+  const [show, setShow] = useState("");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  const controlNavbar = () => {
-    if (window.scrollY > 100) {
-      if (window.scrollY > lastScrollY && !mobileMenu) {
-        setShow("-translate-y-[100px]");
-      } else {
-        setShow("shadow-sm");
-      }
-    } else {
-      setShow("translate-y-0");
-    }
-    setLastScrollY(window.scrollY);
-  };
-
   useEffect(() => {
+    const controlNavbar = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY > 100) {
+        if (scrollY > lastScrollY && !mobileMenu) {
+          setShow("-translate-y-[100px]");
+        } else {
+          setShow("shadow-sm");
+        }
+      } else {
+        setShow("translate-y-0");
+      }
+
+      setLastScrollY(scrollY);
+    };
+
     window.addEventListener("scroll", controlNavbar);
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, mobileMenu]);
 
   const toggleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
@@ -47,7 +48,7 @@ const Header = ({ data }: Props) => {
 
   return (
     <header
-      className={`w-full h-[100px] bg-[#ECCD15] flex items-center justify-between z-[9999] sticky top-0 transition-transform duration-300 ${show}`}
+      className={`w-full h-[100px] flex items-center justify-between z-[9999] sticky top-0 transition-all duration-300 bg-[#ECCD15] ${show}`}
     >
       <Wrapper className="h-[100px] flex justify-between items-center">
         <div className="aspect-[16/7]">{Logo()}</div>

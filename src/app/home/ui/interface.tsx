@@ -1,7 +1,7 @@
 "use client";
 import HeroBanner from "@/components/banner/HeroBanner";
 
-const Banner = () => {
+const HomePageInterface = () => {
   return (
     <>
       <HeroBanner />
@@ -9,4 +9,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default HomePageInterface;

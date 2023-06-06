@@ -1,11 +1,10 @@
 "use client";
 
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-
+import { ToastContainer } from "react-toastify";
 import ProductActions from "@/components/product/product-actions";
 import { renderPrice } from "@/components/product/render-price";
 import { Product } from "@/models";
-import { ToastContainer } from "react-toastify";
 
 interface Props {
   product: Product;
@@ -13,19 +12,22 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = ({ product }) => {
   const { attributes } = product;
+  const { name, subtitle, price, stock, description } = attributes;
 
   return (
     <>
       <div className="flex-[1] py-3">
         <div className="text-[34px] font-semibold mb-2 leading-tight">
-          {attributes.name.toUpperCase()}
+          {name.toUpperCase()}
         </div>
 
-        <div className="text-lg font-semibold mb-5">
-          {attributes.subtitle?.toUpperCase()}
-        </div>
+        {subtitle && (
+          <div className="text-lg font-semibold mb-5">
+            {subtitle.toUpperCase()}
+          </div>
+        )}
 
-        {attributes.price && (
+        {price && (
           <>
             <div className="flex items-center text-black/[0.5]">
               {renderPrice({ product })}
@@ -44,14 +46,18 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
         <div>
           <div className="text-lg font-bold mb-5">Detalles del producto</div>
         </div>
+
         <div className="text-base mb-5 text-[#009EC1]">
-          Stock:
-          {attributes.stock ? " " + attributes.stock : <> disponible</>}
+          Stock: {stock ? ` ${stock}` : " disponible"}
         </div>
-        <div className="markdown text-md mb-5">
-          <ReactMarkdown>{attributes.description}</ReactMarkdown>
-        </div>
+
+        {description && (
+          <div className="markdown text-md mb-5">
+            <ReactMarkdown>{description}</ReactMarkdown>
+          </div>
+        )}
       </div>
+
       <ToastContainer />
     </>
   );
