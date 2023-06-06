@@ -3,7 +3,21 @@ import { FC } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { BiArrowBack } from "react-icons/bi";
 import Banner from "./Banner";
-import { dataImages } from "./data";
+
+export const dataImages = [
+  {
+    id: 1,
+    url: "banner_1.webp",
+  },
+  {
+    id: 2,
+    url: "banner_2.webp",
+  },
+  {
+    id: 3,
+    url: "banner_3.webp",
+  },
+];
 
 interface Image {
   id: number;
@@ -27,20 +41,25 @@ const HeroBanner: FC = () => {
   );
 
   return (
-    <div className="relative text-white aspect-[16/7] text-[20px] w-full  max-w-[1440px] mx-auto">
+    <div className="relative text-white aspect-[16/7] text-[20px] w-full max-w-[1440px] mx-auto">
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
         showThumbs={false}
         showIndicators={false}
         showStatus={false}
-        animationHandler={"fade"}
+        animationHandler="fade"
         renderArrowPrev={(clickHandle, hasPrev) =>
           renderArrow(clickHandle, "right-[31px] md:right-[51px]", "")
         }
         renderArrowNext={(clickHandle, hasPrev) =>
           renderArrow(clickHandle, "", "rotate-180")
         }
+        renderIndicator={() => null} 
+        swipeable={false} 
+        emulateTouch={false} 
+        dynamicHeight={false} 
+        centerMode={false} 
       >
         {images.map((image) => (
           <Banner url={image.url} key={image.id} />
@@ -51,4 +70,3 @@ const HeroBanner: FC = () => {
 };
 
 export default HeroBanner;
-
