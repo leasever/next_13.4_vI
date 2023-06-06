@@ -5,6 +5,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import ProductActions from "@/components/product/product-actions";
 import { renderPrice } from "@/components/product/render-price";
 import { Product } from "@/models";
+import { ToastContainer } from "react-toastify";
 
 interface Props {
   product: Product;
@@ -51,6 +52,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
           <ReactMarkdown>{attributes.description}</ReactMarkdown>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

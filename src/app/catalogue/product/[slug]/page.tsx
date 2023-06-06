@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 5;
 export async function generateStaticParams() {
   const products = await getProducts();
 

@@ -7,6 +7,7 @@ import "react-toastify/ReactToastify.min.css";
 
 import { getCategories } from "./catalogue/services";
 import "./globals.css";
+export const revalidate = 5;
 
 import Chat from "@/components/chat/Chat";
 import Footer from "@/components/footer/Footer";
