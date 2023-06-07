@@ -1,26 +1,23 @@
 import { OpenAIStreamPayload } from "@/lib/openai-strem";
-import { API_URL, OPENIA_URL, STRAPI_API_TOKEN } from "./urls";
 import { notFound } from "next/navigation";
-import { cache } from "react";
+import { API_URL, OPENIA_URL, STRAPI_API_TOKEN } from "./urls";
 
-export const fetchDataFromApi = cache(
-  async (endpoint: string): Promise<any> => {
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + STRAPI_API_TOKEN,
-      },
-      next: { revalidate: 5 },
-    };
+export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + STRAPI_API_TOKEN,
+    },
+    next: { revalidate: 5 },
+  };
 
-    const res = await fetch(`${API_URL}${endpoint}`, options);
-    if (!res.ok) {
-      notFound();
-    }
-    const data = await res.json();
-    return data;
+  const res = await fetch(`${API_URL}${endpoint}`, options);
+  if (!res.ok) {
+    notFound();
   }
-);
+  const data = await res.json();
+  return data;
+};
 
 export const makePaymentRequest = async (endpoint: string, payload: any) => {
   const res = await fetch(`${API_URL}${endpoint}`, {

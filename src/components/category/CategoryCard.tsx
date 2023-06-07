@@ -15,7 +15,7 @@ function CategoryCard({ attributes }: Category) {
             height={400}
             src={data ? data[0].attributes.url : "/sin_imagen.jpg"}
             alt={attributes.name}
-            className="w-full"
+            priority={true}
           />
         </div>
         <h3 className="mt-6 text-lg text-gray-500">
