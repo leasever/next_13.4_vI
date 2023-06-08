@@ -4,11 +4,10 @@ import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-toastify/ReactToastify.min.css";
 
-import "./globals.css";
-
 import Chat from "@/components/chat/Chat";
 import Footer from "@/components/footer/Footer";
 import RootHeader from "@/components/header/RootHeader";
+import "./globals.css";
 
 const roboto = localFont({
   src: "./fonts/Roboto-Regular.woff",
@@ -16,7 +15,7 @@ const roboto = localFont({
   variable: "--font-roboto",
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;

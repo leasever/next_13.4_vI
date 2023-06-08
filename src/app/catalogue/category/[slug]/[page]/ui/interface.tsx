@@ -4,7 +4,7 @@ import ProductCard from "@/components/product/ProductCard";
 import PageTitle from "@/components/ui/PageTitle";
 import Pagination from "@/components/ui/Pagination";
 import { Meta, Product } from "@/models";
-import { Category } from "@/models/category.model";
+import { Category } from "@/models/categories.model";
 import { FC } from "react";
 
 const maxResult = 3;

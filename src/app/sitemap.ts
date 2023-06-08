@@ -1,11 +1,13 @@
 import { Product } from "@/models";
 import { CLIENT_URL } from "@/utils/urls";
 import { getCategories, getProducts } from "./catalogue/services";
-import { Category } from "@/models/category.model";
+import { Category } from "@/models/categories.model";
 
 export default async function sitemap() {
-  const { data: productData } = await getProducts();
-  const { data: categoryData } = await getCategories();
+  const [{ data: productData }, { data: categoryData }] = await Promise.all([
+    getProducts(),
+    getCategories(),
+  ]);
 
   const products = productData.map((product: Product) => ({
     url: `${CLIENT_URL}/catalogue/product/${product.attributes.slug}`,

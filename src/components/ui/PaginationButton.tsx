@@ -2,7 +2,7 @@
 import Wrapper from "@/components/Wrapper";
 import CategoryCard from "@/components/category/CategoryCard";
 import PageTitle from "@/components/ui/PageTitle";
-import { Category, Meta } from "@/models/category.model";
+import { Category, Meta } from "@/models";
 import { useState } from "react";
 
 interface PaginationProps {

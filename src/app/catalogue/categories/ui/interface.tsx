@@ -1,8 +1,7 @@
 import CategoryCard from "@/components/category/CategoryCard";
 import PageTitle from "@/components/ui/PageTitle";
 import Wrapper from "@/components/Wrapper";
-import { Category } from "@/models/category.model";
-
+import { Category } from "@/models/categories.model";
 
 export default function CategoriesInterface({
   categories,

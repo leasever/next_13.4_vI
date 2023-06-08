@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Wrapper from "../Wrapper";
 import Menu from "../menu/Menu";
-import { Category } from "@/models/category.model";
+import { Category } from "@/models/categories.model";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import MenuMobile from "../menu/MenuMobile";

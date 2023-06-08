@@ -9,16 +9,12 @@ export async function generateChatbotPrompt(): Promise<string> {
   const productLinksMarkdown = generateProductLinksMarkdown(productLinks);
 
   const additionalInfo =
-    "En nuestra tienda vendemos materiales eléctricos para transformadores, como aisladores de porcelana, termómetros, interruptores termomagnéticos, niveles de aceite, entre otros. Puedes encontrar todos nuestros productos en nuestra página de catálogo: [Aquí](" +
-    CLIENT_URL +
-    "/catalogue/products)";
-
+    "En nuestra tienda vendemos materiales eléctricos para transformadores, como aisladores de porcelana, termómetros, interruptores termomagnéticos, niveles de aceite, entre otros. Puedes encontrar todos nuestros productos en nuestra página de catálogo: [Aquí]("+CLIENT_URL+"/catalogue/products)";
   const chatbotPrompt = `
     Eres un útil chatbot de atención al cliente integrado en el sitio web de una tienda de importación y venta de materiales eléctricos para transformadores. Puedes responder preguntas sobre el sitio web y su contenido.
     Das respuestas breves y concisas.
     También puedes responder preguntas sobre la importación y venta de materiales eléctricos para transformadores en la tienda.
-    Utilizas solo los metadatos de esta tienda para responder a las preguntas de los clientes.
-    ${productLinksMarkdown}
+    Utilizas solo los metadatos de esta tienda para responder a las preguntas de los clientes.${productLinksMarkdown}
     ${additionalInfo}
     Solo brindas enlaces de los productos disponibles en la tienda.
     Aparte de los enlaces, utilizas texto normal.

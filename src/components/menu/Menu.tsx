@@ -1,4 +1,4 @@
-import { Categories, Category } from "@/models/category.model";
+import { Categories, Category } from "@/models/categories.model";
 import Link from "next/link";
 import React from "react";
 import SubMenu from "./SubMenu";
@@ -14,7 +14,7 @@ interface Props {
   data: Category[];
 }
 
-const Menu = ({data}: Props) => {
+const Menu = ({ data }: Props) => {
   return (
     <ul className="hidden md:flex items-center gap-8 font-medium text-black">
       {linkData.map((item) => {

@@ -1,21 +1,18 @@
-import { Products } from "@/models";
-import { Categories } from "@/models/category.model";
+import { Categories } from "@/models";
 import { fetchDataFromApi } from "@/utils/api";
+import { notFound } from "next/navigation";
 
-export const getCategories = (): Promise<Categories> => {
-  return fetchDataFromApi(`/api/categories?populate=*`);
+const validateData = (data: Categories) => {
+  if (!data || data.data.length === 0) {
+    return notFound();
+  }
+  return data;
 };
 
-export const getCategory = (slug: string): Promise<Categories> => {
-  return fetchDataFromApi(`/api/categories?filters[slug][$eq]=${slug}`);
-};
+export const getCategories = (): Promise<Categories> =>
+  fetchDataFromApi(`/api/categories?populate=*`).then(validateData);
 
-export const getProdutsPerCategory = (
-  slug: string,
-  page: string,
-  maxResult: string
-): Promise<Products> => {
-  return fetchDataFromApi(
-    `/api/products?populate=*&[filters][categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${maxResult}`
+export const getCategory = (slug: string): Promise<Categories> =>
+  fetchDataFromApi(`/api/categories?filters[slug][$eq]=${slug}`).then(
+    validateData
   );
-};

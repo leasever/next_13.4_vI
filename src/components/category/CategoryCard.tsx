@@ -1,4 +1,4 @@
-import { Category } from "@/models/category.model";
+import { Category } from "@/models/categories.model";
 import Image from "next/image";
 import Link from "next/link";
 

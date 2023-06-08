@@ -1,13 +1,11 @@
 import {
   getProduct,
-  getProducts,
-  getRelatedProducts,
+  getRelatedProducts
 } from "@/app/catalogue/services";
-import { Metadata } from "next";
-import ProductDetails from "./ui/interface";
-import { Product } from "@/models";
 import ProductDetailsCarousel from "@/components/product/Carousel";
 import RelatedProducts from "@/components/product/RelatedProducts";
+import { Metadata } from "next";
+import ProductDetails from "./ui/interface";
 
 interface Props {
   params: {
@@ -20,14 +18,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: (data[0]?.attributes.name).toUpperCase(),
   };
-}
-
-export async function generateStaticParams() {
-  const { data } = await getProducts();
-
-  return data.map(({ attributes: { slug } }: Product) => ({
-    slug,
-  }));
 }
 
 export default async function ProductPage({ params }: Props) {

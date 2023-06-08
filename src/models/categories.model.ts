@@ -1,18 +1,11 @@
+import { Meta } from "./meta.model";
+
 export interface Categories {
   data: Category[];
   meta: Meta;
 }
 
-export interface Meta {
-  pagination: Pagination;
-}
 
-interface Pagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
-}
 
 export interface Category {
   id: number;

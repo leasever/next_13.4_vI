@@ -1,4 +1,4 @@
-import { Categories, Category } from "@/models/category.model";
+import { Categories, Category } from "@/models/categories.model";
 import Link from "next/link";
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";

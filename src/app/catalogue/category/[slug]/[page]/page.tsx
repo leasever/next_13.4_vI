@@ -1,13 +1,11 @@
-import { getCategory, getProdutsPerCategory } from "@/app/catalogue/services";
+import { getCategory, getProductsPerCategory } from "@/app/catalogue/services";
+import { Category, Meta, Product } from "@/models";
 import { Metadata } from "next";
 import PageProducts from "./ui/interface";
-import { Category, Meta } from "@/models/category.model";
-import { Product } from "@/models";
-import NotFound from "@/app/not-found";
 
 interface Props {
   params: {
-    slug: string;
+    slug: string;   
     page: string;
   };
 }
@@ -28,7 +26,7 @@ export default async function CategoryPage({ params: { slug, page } }: Props) {
   }> => {
     const [categoryResponse, productsResponse] = await Promise.all([
       getCategory(slug),
-      getProdutsPerCategory(slug, page, "3"),
+      getProductsPerCategory(slug, page, "3"),
     ]);
     const category = categoryResponse.data[0];
     const { data, meta } = productsResponse;
@@ -36,10 +34,6 @@ export default async function CategoryPage({ params: { slug, page } }: Props) {
   };
 
   const { category, data, meta } = await fetchData();
-
-  if (!category || data.length === 0) {
-    return <NotFound />;
-  }
 
   return (
     <>
