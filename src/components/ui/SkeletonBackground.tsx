@@ -1,0 +1,21 @@
+const SkeletonBackground = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
+    preserveAspectRatio="xMidYMid"
+    viewBox="0 0 100 100"
+  >
+    <rect x="0" y="0" width="100" height="100" rx="5">
+      <animate
+        attributeName="fill"
+        repeatCount="indefinite"
+        dur="1s"
+        keyTimes="0;0.5;1"
+        values="lightgray;gray;lightgray"
+      ></animate>
+    </rect>
+  </svg>
+);
+
+export default SkeletonBackground;
