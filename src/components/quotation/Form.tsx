@@ -46,7 +46,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
     e.preventDefault();
     setLoading(true);
     const status = await sendMessaage({ formData, quotationItems });
-    status && dispatch(clearQuotation());
+    // status && dispatch(clearQuotation());
     setLoading(false);
   };
 

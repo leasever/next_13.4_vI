@@ -39,23 +39,22 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
       return;
     }
 
-    const addToCartAction = attributes.price
-      ? addToCart({
-          ...product,
-          size: selectedSizes,
-          productId: product.id,
-          oneQuantityPrice: attributes.price,
-        })
-      : addToQuotation({
-          ...product,
-          size: selectedSizes,
-          productId: product.id,
-          name: `${attributes.name}${
-            selectedSizes.length > 0 ? " - sizes" : " x 1"
-          }`.toUpperCase(),
-        });
+    dispatch(
+      attributes.price
+        ? addToCart({
+            ...product,
+            size: selectedSizes,
+            productId: product.id,
+            oneQuantityPrice: attributes.price,
+          })
+        : addToQuotation({
+            ...product,
+            size: selectedSizes,
+            productId: product.id,
+            name: `${attributes.name}`.toUpperCase(),
+          })
+    );
 
-    dispatch(addToCartAction);
     notifySuccess("Producto agregado");
   };
 

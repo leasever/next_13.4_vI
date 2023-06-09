@@ -34,9 +34,7 @@ export default function DispatchItem({ data }: Props) {
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newQuantity = parseInt(e.target.value);
-    const newName = `${name} x ${newQuantity}`.toLocaleUpperCase();
     updateCartItem("quantity", newQuantity);
-    updateCartItem("name", newName);
   };
 
   return (

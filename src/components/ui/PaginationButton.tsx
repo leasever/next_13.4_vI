@@ -39,12 +39,11 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <Wrapper>
       <PageTitle title={"CATEGORÍAS DESTACADAS"} description={""} />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10 ">
         {currentItems.map((category) => (
           <CategoryCard
             key={category.id}
-            attributes={category.attributes}
-            id={category.id}
+            category={category.attributes}
           />
         ))}
       </div>

@@ -15,7 +15,6 @@ const Empty = () => {
             width={250}
             height={250}
             alt="empty cart"
-            priority={true}
           />
         </div>
         <span className="text-xl font-bold">Tu carrito esta vacío</span>

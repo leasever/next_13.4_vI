@@ -9,10 +9,10 @@ export interface Categories {
 
 export interface Category {
   id: number;
-  attributes: CategoryAtributes;
+  attributes: CategoryAttributes;
 }
 
-export interface CategoryAtributes {
+export interface CategoryAttributes {
   name: string;
   slug: string;
   createdAt: string;
