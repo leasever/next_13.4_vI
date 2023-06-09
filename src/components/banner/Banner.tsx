@@ -1,5 +1,5 @@
-'use client'
-import Image from "next/image";
+"use client";
+import Image, { ImageLoaderProps } from "next/image";
 import { FC } from "react";
 
 interface BannerProps {
@@ -7,8 +7,8 @@ interface BannerProps {
 }
 
 export const Banner: FC<BannerProps> = ({ url }) => {
-  const imageLoader = ({ src, width, quality }: any) => {
-    return `${src}?w=${width}&q=${quality || 100}`;
+  const imageLoader = ({ src, width, quality }: ImageLoaderProps): string => {
+    return `${url}?w=${1440}&q=${500}`;
   };
   return (
     <div className="relative w-full max-h-[630px]">
@@ -18,6 +18,7 @@ export const Banner: FC<BannerProps> = ({ url }) => {
         loader={imageLoader}
         src={`/${url}`}
         alt={url}
+        priority={true}
       />
     </div>
   );
