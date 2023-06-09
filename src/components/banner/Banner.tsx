@@ -18,8 +18,6 @@ export const Banner: FC<BannerProps> = ({ url }) => {
         loader={imageLoader}
         src={`/${url}`}
         alt={url}
-        priority={true}
-        className="w-full"
       />
     </div>
   );
