@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import { FC } from "react";
 
@@ -18,7 +19,7 @@ export const Banner: FC<BannerProps> = ({ url }) => {
         src={`/${url}`}
         alt={url}
         priority={true}
-        loading="eager"
+        className="w-full"
       />
     </div>
   );
