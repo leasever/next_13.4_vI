@@ -21,10 +21,10 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
         <Image
           width={630}
           height={400}
+          loader={imageLoader}
           src={imageUrl}
           alt={name}
           className="w-full"
-          loader={imageLoader}
         />
       </div>
       <div className="mt-6">
