@@ -1,7 +1,6 @@
 import { CategoryAttributes } from "@/models/categories.model";
 import Image from "next/image";
 import Link from "next/link";
-import SkeletonBackground from "@/components/ui/SkeletonBackground";
 
 interface CategoryCardProps {
   category: CategoryAttributes;
@@ -12,6 +11,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
   const { data } = image;
 
   const imageUrl = data ? data[0]?.attributes?.url : "/sin_imagen.jpg";
+  const imageLoader = ({ src, width, quality }: any) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
 
   return (
     <div className="group relative">
@@ -22,9 +24,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
           src={imageUrl}
           alt={name}
           className="w-full"
-          // blurDataURL="/placeholder-image.jpg" // Ruta a la imagen de placeholder desenfocada
-          // placeholder="blur" // Se aplica el efecto de desenfoque al cargar
-          onLoad={() => <SkeletonBackground />} // Se muestra el skeleton mientras se carga la imagen
+          loader={imageLoader}
         />
       </div>
       <div className="mt-6">
