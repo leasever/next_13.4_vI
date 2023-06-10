@@ -1,8 +1,10 @@
 import Providers from "@/components/Providers";
 import localFont from "next/font/local";
+import { ImageLoaderProps } from "next/image";
 import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-toastify/ReactToastify.min.css";
+
 
 import Chat from "@/components/chat/Chat";
 import Footer from "@/components/footer/Footer";
@@ -33,3 +35,8 @@ export default function RootLayout({
     </Providers>
   );
 }
+
+
+export const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};

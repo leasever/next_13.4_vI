@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+
 export default async function ProductPage({ params }: Props) {
   const { data } = await getProduct(params.slug);
   const categoryId = data[0]?.attributes.categories.data[0]?.id;

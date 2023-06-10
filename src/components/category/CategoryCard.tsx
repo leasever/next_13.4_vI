@@ -1,3 +1,5 @@
+"use client";
+import { imageLoader } from "@/app/layout";
 import { CategoryAttributes } from "@/models/categories.model";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,9 +13,6 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
   const { data } = image;
 
   const imageUrl = data ? data[0]?.attributes?.url : "/sin_imagen.jpg";
-  const imageLoader = ({ src, width, quality }: any) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
 
   return (
     <div className="group relative">

@@ -1,7 +1,8 @@
 "use client";
-import Image from "next/image";
 import { FC } from "react";
 import { Carousel } from "react-responsive-carousel";
+import NextImage from "next/image";
+import { imageLoader } from "@/app/layout";
 
 interface CarouselCard {
   id: number;
@@ -20,7 +21,7 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
     return (
       <div className="w-full md:w-auto flex-[1.5] max-w-[520px] mx-auto lg:mx-0">
         <div className="w-full  mx-auto sticky top-[50px]">
-          <Image
+          <NextImage
             src="/sin_imagen.jpg"
             width={520}
             height={650}
@@ -30,6 +31,8 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
       </div>
     );
   }
+
+  const imageUrls = data.map((img) => img.attributes.url);
 
   return (
     <div className="w-full  flex-[1.5] max-w-[520px] mx-auto lg:mx-0">
@@ -41,20 +44,21 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
           thumbWidth={50}
           className="productCarousel"
           renderThumbs={() =>
-            data.map((img, idx) => (
-              <Image
+            imageUrls.map((url, idx) => (
+              <NextImage
                 key={idx}
-                src={img.attributes.url}
+                src={url}
                 width={50}
                 height={60}
-                alt={img.attributes.name}
+                alt={`Thumbnail ${idx}`}
               />
             ))
           }
         >
           {data.map((img, idx) => (
             <div className="w-full h-full  max-h-[650px] bg-white" key={idx}>
-              <Image
+              <NextImage
+                loader={imageLoader}
                 src={img.attributes.url}
                 alt={`${img.attributes.name} preview ${idx}`}
                 width={520}
