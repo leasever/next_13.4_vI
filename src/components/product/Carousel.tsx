@@ -54,6 +54,11 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
               />
             ))
           }
+          renderIndicator={() => null}
+          swipeable={false}
+          emulateTouch={false}
+          dynamicHeight={false}
+          centerMode={false}
         >
           {data.map((img, idx) => (
             <div className="w-full h-full  max-h-[650px] bg-white" key={idx}>

@@ -25,11 +25,11 @@ const CartInterface = () => {
 
           <div className="flex flex-col lg:flex-row gap-12 py-10">
             <CartItemsList cartItems={cartItems} />
-            <CartSummary subTotal={subTotal} />
+            <CartSummary subTotal={subTotal}  items={cartItems}/>
           </div>
-          <div className="max-w-3xl m-auto">
+          {/* <div className="max-w-3xl m-auto">
             <PaymentButton items={cartItems} />
-          </div>
+          </div> */}
         </>
       )}
 

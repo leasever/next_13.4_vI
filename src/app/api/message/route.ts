@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     content: message.text,
   }));
 
-  const chatbotPrompt = await generateChatbotPrompt(); // Generar el chatbot prompt aquí
+  const chatbotPrompt = await generateChatbotPrompt();
 
   outboundMessages.unshift({
     role: "system",
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     model: "gpt-3.5-turbo",
     messages: outboundMessages,
     temperature: 0.2,
-    max_tokens: 200,
+    max_tokens: 400,
     stream: true,
   };
 

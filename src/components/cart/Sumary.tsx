@@ -1,8 +1,12 @@
+import { CartItemInterface } from "@/models";
+import PaymentButton from "./PaymenButton";
+
 interface Props {
   subTotal: number;
+  items: CartItemInterface[];
 }
 
-const CartSummary: React.FC<Props> = ({ subTotal }) => {
+const CartSummary: React.FC<Props> = ({ subTotal, items }) => {
   return (
     <div className="flex-[1]">
       <div className="text-lg font-bold">Resumen</div>
@@ -20,6 +24,9 @@ const CartSummary: React.FC<Props> = ({ subTotal }) => {
           El subtotal refleja el precio total de su pedido, incluidos aranceles
           e impuestos, antes de cualquier descuento aplicable. No incluye gastos
           de envío e internacionales. tarifas de transacción.
+        </div>
+        <div className="max-w-3xl m-auto">
+          <PaymentButton items={items} />
         </div>
       </div>
     </div>

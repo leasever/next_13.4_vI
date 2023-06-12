@@ -17,15 +17,14 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
   return (
     <>
       <div className="flex-[1] py-3">
-        <div className="text-[34px] font-semibold mb-2 leading-tight">
+        <div className="text-[34px] font-semibold mb-10 leading-tight">
           {name.toUpperCase()}
+          {subtitle && (
+            <div className="text-lg font-semibold mt-5">
+              {subtitle.toUpperCase()}
+            </div>
+          )}
         </div>
-
-        {subtitle && (
-          <div className="text-lg font-semibold mb-5">
-            {subtitle.toUpperCase()}
-          </div>
-        )}
 
         {price && (
           <>

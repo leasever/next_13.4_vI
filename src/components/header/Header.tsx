@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Wrapper from "../Wrapper";
-import Menu from "../menu/Menu";
 import { Category } from "@/models/categories.model";
+import { useEffect, useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
+import Wrapper from "../Wrapper";
+import Menu from "../menu/Menu";
 import MenuMobile from "../menu/MenuMobile";
 import Icons from "./Icon";
 import Logo from "./Logo";
@@ -23,7 +23,7 @@ const Header = ({ data }: Props) => {
     const controlNavbar = () => {
       const scrollY = window.scrollY;
 
-      if (scrollY > 100) {
+      if (scrollY > 80) {
         if (scrollY > lastScrollY && !mobileMenu) {
           setShow("-translate-y-[100px]");
         } else {
@@ -48,9 +48,9 @@ const Header = ({ data }: Props) => {
 
   return (
     <header
-      className={`w-full h-[100px] flex items-center justify-between z-[9999] sticky top-0 transition-all duration-300 bg-[#ECCD15] ${show}`}
+      className={`w-full h-[100px] flex items-center justify-between z-[9999] sticky top-0 transition-all duration-300 bg-[#EFEFEF] bg-opacity-50 backdrop-filter backdrop-blur-md ${show}`}
     >
-      <Wrapper className="h-[100px] flex justify-between items-center">
+      <Wrapper className="h-[100px] flex justify-between items-center  ">
         <div className="aspect-[16/7]">{Logo()}</div>
 
         <Menu data={data} />

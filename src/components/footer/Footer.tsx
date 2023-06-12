@@ -17,21 +17,17 @@ const icons: Props[] = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#E6E5EE] text-black  pb-3">
-      <Wrapper className="flex flex-col  md:flex-row  md:justify-between   gap-[50px] md:gap-0">
-        <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
-          <div className="flex flex-row items-center gap-3 shrink-0 m-auto">
-            <Link href="/home" className="flex flex-row items-center">
-              <Image
-                src={"/logo_footer.png"}
-                alt="Logo de la empresa"
-                width={500}
-                height={220}
-                priority={true}
-                className="w-auto"
-              />
-            </Link>
-          </div>
+    <footer className="bg-[#E6E5EE] text-black  pb-3 ">
+      <Wrapper className="flex flex-col items-center  md:flex-row  md:justify-between h-[330px] md:h-[268px] gap-[50px] md:gap-0 pt-10">
+        <div className="m-w-[500px]">
+          <Link href="/">
+            <Image
+              src={"/principal_logo.png"}
+              alt="Logo de la empresa"
+              width={500}
+              height={220}
+            />
+          </Link>
         </div>
 
         <div className="flex gap-4 justify-center md:justify-start">
@@ -45,8 +41,8 @@ const Footer = () => {
         </div>
       </Wrapper>
 
-      <Wrapper className="flex justify-between mt-10 flex-col md:flex-row gap-[10px] md:gap-0">
-        <div className="flex gap-2 md:gap-5 text-center md:text-left flex-wrap justify-center">
+      <div className="max-w-[1440px] m-auto ">
+        <div className="flex gap-2 md:gap-5 text-left flex-wrap justify-center">
           <div className="text-[12px] text-black/[0.7]  hover:text-black cursor-pointer">
             Condiciones de venta
           </div>
@@ -54,7 +50,7 @@ const Footer = () => {
             Política de privacidad
           </div>
         </div>
-      </Wrapper>
+      </div>
     </footer>
   );
 };
