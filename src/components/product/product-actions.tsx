@@ -12,44 +12,49 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   const { attributes } = product;
   const [selectedSizes, setSelectedSizes] = useState<SizeProd[]>([]);
   const [showError, setShowError] = useState(false);
-  const { isProductInCart, isProductInQuotation } = useProductExistence(
-    product.id
-  );
+  const { isProductInQuotation } = useProductExistence(product.id);
 
   useEffect(() => {
-    if (isProductInCart || isProductInQuotation) {
-      const selectedSize = isProductInCart
-        ? isProductInCart.size
-        : isProductInQuotation?.size;
+    if (isProductInQuotation) {
+      const selectedSize = isProductInQuotation?.size;
 
       if (selectedSize && selectedSize.length > 0) {
         setSelectedSizes(selectedSize);
       }
     }
-  }, [isProductInCart, isProductInQuotation]);
+  }, [isProductInQuotation]);
 
-  const sizeGridItems = attributes.size.map((item) => (
+  const sizeGridItems = attributes.product_sizes.data.map((item) => (
     <div
       key={item.id}
       className={`border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer ${
-        selectedSizes.some((size) => size.val === item.val) && "border-black"
+        selectedSizes.some((size) => size.val === item.attributes.val) &&
+        "border-black"
       }`}
       onClick={() => {
         setSelectedSizes((prevSizes) =>
-          selectedSizes.some((size) => size.val === item.val)
-            ? prevSizes.filter((size) => size.val !== item.val)
-            : [...prevSizes, { id: item.id, val: item.val, quantity: 1 }]
+          selectedSizes.some((size) => size.val === item.attributes.val)
+            ? prevSizes.filter((size) => size.val !== item.attributes.val)
+            : [
+                ...prevSizes,
+                {
+                  id: item.id,
+                  val: item.attributes.val,
+                  quantity: 1,
+                  quotation_price: item.attributes.quotation_price,
+                },
+              ]
         );
         setShowError(false);
       }}
     >
-      {item.val}
+      {item.attributes.val}
     </div>
   ));
 
   return (
     <>
-      {attributes.size.length > 0 && (
+      {attributes.product_sizes.data.length > 0 && (
         <div className="mb-10">
           <div className="flex justify-between mb-2">
             <div className="text-md font-semibold">Selecciona el tamaño</div>

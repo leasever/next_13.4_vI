@@ -10,7 +10,7 @@ const CartItemsList: React.FC<Props> = ({ cartItems }) => {
     <div className="flex-[2]">
       <div className="text-lg font-bold">Artículos:</div>
       {cartItems.map((item) => (
-        <CartItem key={item.productId} data={item} />
+        <CartItem key={item.id} data={item} />
       ))}
     </div>
   );

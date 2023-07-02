@@ -10,11 +10,11 @@ import MenuMobile from "../menu/MenuMobile";
 import Icons from "./Icon";
 import Logo from "./Logo";
 
-interface Props {
+interface PropsHeader {
   data: Category[];
 }
 
-const Header = ({ data }: Props) => {
+const Header = ({ data }: PropsHeader) => {
   const [show, setShow] = useState("");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -65,12 +65,12 @@ const Header = ({ data }: Props) => {
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative -mr-2">
             {mobileMenu ? (
               <VscChromeClose
-                className="text-[16px]"
+                className="text-[24px]"
                 onClick={() => setMobileMenu(false)}
               />
             ) : (
               <BiMenuAltRight
-                className="text-[20px]"
+                className="text-[24px]"
                 onClick={() => setMobileMenu(true)}
               />
             )}

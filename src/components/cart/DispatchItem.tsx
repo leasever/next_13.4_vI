@@ -1,5 +1,4 @@
 import { CartItemInterface } from "@/models/cart.model";
-import { removeFromCart, updateCart } from "@/store/cart-slice";
 import { removeFromQuotation, updateQuotation } from "@/store/quotation-slice";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDispatch } from "react-redux";
@@ -12,11 +11,9 @@ interface Props {
 
 export default function DispatchItem({ data }: Props) {
   const {
-    productId,
+    id,
     quantity,
-    oneQuantityPrice,
-    attributes: { size, name, price },
-    size: sizeCart,
+    attributes: { product_sizes },
   } = data;
   const dispatch = useDispatch();
 
@@ -24,23 +21,21 @@ export default function DispatchItem({ data }: Props) {
     const payload = {
       key: type,
       val: value,
-      id: productId,
+      id: id,
     };
 
-    oneQuantityPrice > 0
-      ? dispatch(updateCart(payload))
-      : dispatch(updateQuotation(payload));
+    dispatch(updateQuotation(payload));
   };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newQuantity = parseInt(e.target.value);
-    updateCartItem("quantity", newQuantity);
+    updateCartItem("quantity", newQuantity  );
   };
 
   return (
     <>
       <div className="flex items-center justify-between mt-4">
-        {size.length > 0 ? (
+        {product_sizes.data.length > 0 ? (
           <Size data={data} />
         ) : (
           <div className="flex items-center gap-1">
@@ -63,13 +58,7 @@ export default function DispatchItem({ data }: Props) {
         )}
 
         <RiDeleteBin6Line
-          onClick={() =>
-            dispatch(
-              price
-                ? removeFromCart({ id: productId })
-                : removeFromQuotation({ id: productId })
-            )
-          }
+          onClick={() => dispatch(removeFromQuotation({ id: id }))}
           className="cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]"
         />
       </div>

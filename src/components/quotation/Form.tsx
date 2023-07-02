@@ -5,30 +5,19 @@ import { useDispatch } from "react-redux";
 import TextareaAutosize from "react-textarea-autosize";
 import { sendMessaage } from "../../app/catalogue/services/quotation.service";
 import { InputField } from "./InputField";
+import { FormDataQuotation, ProductQuotation } from "@/models/quotation.model";
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
 
-export interface Quotation {
-  size: SizeProd[];
-  name?: string;
-  quantity: number;
-  productId: number;
-}
 
 interface Props {
-  quotationItems: Quotation[];
+  quotationItems: ProductQuotation[];
 }
 
 const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataQuotation>({
     name: "",
     email: "",
     phone: "",

@@ -1,10 +1,5 @@
 import RootPage from "../page";
 
-export default async function HomePage() {
-  
-  return (
-    <>
-      {RootPage()}
-    </>
-  );
+export default function HomePage() {
+  return <>{RootPage()}</>;
 }

@@ -18,7 +18,7 @@ export const getRelatedProducts = (
 ): Promise<Products> =>
   fetchDataFromApi(
     `/api/products?populate=*&filters[categories][id][$eq]=${categoryId}&filters[slug][$ne]=${slug}`
-  ).then(validateData);
+  );
 
 export const getProduct = (slug: string): Promise<Products> =>
   fetchDataFromApi(`/api/products?populate=*&filters[slug][$eq]=${slug}`).then(

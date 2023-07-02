@@ -1,11 +1,6 @@
-import {
-  getProduct,
-  getRelatedProducts
-} from "@/app/catalogue/services";
-import ProductDetailsCarousel from "@/components/product/Carousel";
-import RelatedProducts from "@/components/product/RelatedProducts";
+import { getProduct, getRelatedProducts } from "@/app/catalogue/services";
+import RootProductPage from "@/components/product/RootProductPage";
 import { Metadata } from "next";
-import ProductDetails from "./ui/interface";
 
 interface Props {
   params: {
@@ -20,7 +15,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-
 export default async function ProductPage({ params }: Props) {
   const { data } = await getProduct(params.slug);
   const categoryId = data[0]?.attributes.categories.data[0]?.id;
@@ -30,11 +24,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
-        <ProductDetailsCarousel data={data[0]?.attributes.image.data} />
-        <ProductDetails product={data[0]} />
-      </div>
-      {products.length > 0 && <RelatedProducts products={products} />}
+      <RootProductPage product={data} products={products} />
     </>
   );
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import DispatchItem from "./DispatchItem";
 
 interface Props {
-  data: CartItemInterface ;
+  data: CartItemInterface;
 }
 
 const CartItem = ({ data }: Props) => {
@@ -31,12 +31,6 @@ const CartItem = ({ data }: Props) => {
           <div className="text-lg md:text-2xl font-semibold text-black/[0.8]">
             {p.name.toUpperCase()}
           </div>
-
-          {p.price && (
-            <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
-              MRP : S/{p.price}
-            </div>
-          )}
         </div>
         <div className="text-sm md:text-md font-medium text-black/[0.5] hidden md:block">
           {p.subtitle?.toUpperCase()}

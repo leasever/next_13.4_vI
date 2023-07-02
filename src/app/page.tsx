@@ -1,8 +1,6 @@
-import RelatedProducts from "@/components/product/RelatedProducts";
-import Pagination from "@/components/ui/PaginationButton";
+import RootHomePage from "@/components/home/RootPageHome";
 import { Metadata } from "next";
 import { getCategories, getProducts } from "./catalogue/services";
-import HomePageInterface from "./home/ui/interface";
 
 export const metadata: Metadata = {
   title: "Consorcio A&C - Eléctrica S.A.C",
@@ -10,6 +8,20 @@ export const metadata: Metadata = {
     "Importación y venta de materiales eléctricos para tranformadores",
 };
 
+const dataImages = [
+  {
+    id: 1,
+    url: "banner_1.webp",
+  },
+  {
+    id: 2,
+    url: "banner_2.webp",
+  },
+  {
+    id: 3,
+    url: "banner_3.webp",
+  },
+];
 
 export default async function RootPage() {
   const [{ data: categories, meta }, { data: products }] = await Promise.all([
@@ -18,9 +30,13 @@ export default async function RootPage() {
   ]);
   return (
     <>
-      <HomePageInterface />
-      <Pagination categories={categories} meta={meta} itemsPerPage={2} />
-      <RelatedProducts products={products} />
+      <RootHomePage
+        categories={categories}
+        dataImages={dataImages}
+        itemsPerPage={2}
+        meta={meta}
+        products={products}
+      />
     </>
   );
 }

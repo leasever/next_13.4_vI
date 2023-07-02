@@ -4,22 +4,15 @@ import { Carousel } from "react-responsive-carousel";
 import { BiArrowBack } from "react-icons/bi";
 import { Banner } from "./Banner";
 
-const dataImages = [
-  {
-    id: 1,
-    url: "banner_1.webp",
-  },
-  {
-    id: 2,
-    url: "banner_2.webp",
-  },
-  {
-    id: 3,
-    url: "banner_3.webp",
-  },
-];
+interface PropsHeroBanner {
+  data: PropsImg[];
+}
+interface PropsImg {
+  id: number;
+  url: string;
+}
 
-const HeroBanner: FC = () => {
+const HeroBanner: FC<PropsHeroBanner> = ({ data }) => {
   const renderArrow = (
     clickHandle: () => void,
     className: string,
@@ -34,7 +27,7 @@ const HeroBanner: FC = () => {
   );
 
   return (
-    <div className="relative text-white aspect-[16/7] text-[20px] w-full max-w-[1440px] mx-auto">
+    <div className="relative aspect-[16/7] text-white  text-[20px] max-w-[1440px] max-h-[630px] mx-auto">
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
@@ -54,8 +47,10 @@ const HeroBanner: FC = () => {
         dynamicHeight={false}
         centerMode={false}
       >
-        {dataImages.map((image) => (
-          <Banner url={image.url} key={image.id} />
+        {data.map((image) => (
+          <div className="w-full max-h-[630px]" key={image.id}>
+            <Banner url={image.url}  />
+          </div>
         ))}
       </Carousel>
     </div>

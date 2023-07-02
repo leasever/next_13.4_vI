@@ -12,7 +12,10 @@ import { ToastContainer } from "react-toastify";
 const QuotationInterface = () => {
   const { quotationItems } = useSelector((state: RootState) => state.quotation);
   const hasQuotationItems = quotationItems.length > 0;
-
+  const quotationItemsWithoutAttributes = quotationItems.map((item) => {
+    const { attributes, ...rest } = item;
+    return rest;
+  });
   return (
     <Wrapper>
       {hasQuotationItems && (
@@ -24,7 +27,7 @@ const QuotationInterface = () => {
               <CartItemsList cartItems={quotationItems} />
             </div>
             <div className="h-full sticky top-[50px]">
-              <QuotationForm quotationItems={quotationItems} />
+              <QuotationForm quotationItems={quotationItemsWithoutAttributes} />
             </div>
           </div>
         </>

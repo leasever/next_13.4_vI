@@ -1,7 +1,6 @@
 import { Product } from "@/models";
 import Image from "next/image";
 import Link from "next/link";
-import { renderPrice } from "./render-price";
 
 interface Props {
   product: Product;
@@ -30,11 +29,7 @@ function ProductCard({ product }: Props) {
             {attributes.name.toLocaleUpperCase()}
           </h2>
           <div className="flex items-center text-black/[0.5]">
-            {attributes.price ? (
-              renderPrice({ product })
-            ) : (
-              <p className="text-sm ">Producto bajo pedido</p>
-            )}
+            <p className="text-sm ">Producto bajo pedido</p>
           </div>
         </div>
       </Link>

@@ -13,31 +13,33 @@ export interface Product {
 export interface AttributesProduct {
   name: string;
   subtitle?: any;
-  price?: any;
   description: string;
-  original_price?: any;
   slug: string;
+  quotation_price?: any;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  locale: string;
-  stock?: any;
   image: Image;
   thumbnail: Thumbnail;
   categories: Categories;
-  size: Size[];
-  localizations: Localizations;
+  product_sizes: Productsizes;
 }
 
-interface Localizations {
-  data: any[];
+interface Productsizes {
+  data: Datum3[];
 }
 
-interface Size {
+interface Datum3 {
   id: number;
+  attributes: Attributes4;
+}
+
+interface Attributes4 {
+  quotation_price: number;
   val: string;
-  status: boolean;
-  quantity?: any;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }
 
 interface Categories {
@@ -55,7 +57,6 @@ interface Attributes3 {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  locale: string;
 }
 
 interface Thumbnail {

@@ -10,7 +10,7 @@ const validateData = (data: Categories) => {
 };
 
 export const getCategories = (): Promise<Categories> =>
-  fetchDataFromApi(`/api/categories?populate=*`).then(validateData);
+  fetchDataFromApi(`/api/categories?populate=*`);
 
 export const getCategory = (slug: string): Promise<Categories> =>
   fetchDataFromApi(`/api/categories?filters[slug][$eq]=${slug}`).then(

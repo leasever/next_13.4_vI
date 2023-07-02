@@ -1,11 +1,9 @@
 import { RootState } from "@/store/store";
 import Link from "next/link";
-import { BsCart } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useSelector } from "react-redux";
 
 const Icons = () => {
-  const { cartItems } = useSelector((state: RootState) => state.cart);
   const { quotationItems } = useSelector((state: RootState) => state.quotation);
 
   const icons = [
@@ -13,11 +11,6 @@ const Icons = () => {
       link: "/quotation",
       state: quotationItems.length,
       icon: <IoMdHeartEmpty className="text-[19px] md:text-[24px]" />,
-    },
-    {
-      link: "/cart",
-      state: cartItems.length,
-      icon: <BsCart className="text-[19px] md:text-[24px]" />,
     },
   ];
 

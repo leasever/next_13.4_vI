@@ -31,7 +31,6 @@ export default async function sitemap() {
     "/contact",
     "/about",
     "/quotation",
-    "/cart",
   ].map((route) => ({
     url: `${CLIENT_URL}${route}`,
     lastModified: new Date(),

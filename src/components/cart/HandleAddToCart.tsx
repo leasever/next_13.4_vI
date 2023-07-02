@@ -1,6 +1,5 @@
 import { Product } from "@/models";
 import { SizeProd } from "@/models/cart.model";
-import { addToCart } from "@/store/cart-slice";
 import { addToQuotation } from "@/store/quotation-slice";
 import { notifySuccess } from "@/utils/notify-manager";
 import { useDispatch } from "react-redux";
@@ -20,17 +19,10 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
 }) => {
   const { attributes } = product;
 
-  if (attributes.stock === 0) {
-    return null;
-  }
-
   const dispatch = useDispatch();
-  const { isProductInCart, isProductInQuotation } = useProductExistence(
-    product.id
-  );
-
+  const { isProductInQuotation } = useProductExistence(product.id);
   const handleAddToCart = () => {
-    if (selectedSizes.length <= 0 && attributes.size.length > 0) {
+    if (selectedSizes.length <= 0 && attributes.product_sizes.data.length > 0) {
       setShowError(true);
       document.getElementById("sizesGrid")?.scrollIntoView({
         block: "center",
@@ -38,27 +30,19 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
       });
       return;
     }
-
     dispatch(
-      attributes.price
-        ? addToCart({
-            ...product,
-            size: selectedSizes,
-            productId: product.id,
-            oneQuantityPrice: attributes.price,
-          })
-        : addToQuotation({
-            ...product,
-            size: selectedSizes,
-            productId: product.id,
-            name: `${attributes.name}`.toUpperCase(),
-          })
+      addToQuotation({
+        ...product,
+        size: selectedSizes,
+        name: `${attributes.name}`.toUpperCase(),
+        quotation_price: attributes.quotation_price,
+      })
     );
 
     notifySuccess("Producto agregado");
   };
 
-  const buttonDisabled = !!(isProductInCart || isProductInQuotation);
+  const buttonDisabled = !!isProductInQuotation;
 
   return (
     <button
@@ -69,8 +53,7 @@ const HandleAddToCart: React.FC<HandleAddToCartProps> = ({
       disabled={buttonDisabled}
     >
       {buttonDisabled && "Producto agregado"}
-      {!buttonDisabled &&
-        (attributes.price ? "Agregar al carrito" : "Cotizar producto")}
+      {!buttonDisabled && "Cotizar producto"}
     </button>
   );
 };

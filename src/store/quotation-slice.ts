@@ -17,7 +17,7 @@ export const quotationSlice = createSlice({
 
     updateQuotation: (state, action) => {
       state.quotationItems = state.quotationItems.map((p) => {
-        if (p.productId === action.payload.id) {
+        if (p.id === action.payload.id) {
           return { ...p, [action.payload.key]: action.payload.val };
         }
         return p;
@@ -26,7 +26,7 @@ export const quotationSlice = createSlice({
 
     removeFromQuotation: (state, action) => {
       state.quotationItems = state.quotationItems.filter(
-        (p) => p.productId !== action.payload.id
+        (p) => p.id !== action.payload.id
       );
     },
 

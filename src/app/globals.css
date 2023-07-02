@@ -63,12 +63,7 @@ body {
   overflow: hidden;
   position: relative;
 }
-.productCarousel.carousel-root .carousel .thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
+
 .productCarousel.carousel-root .carousel .thumb:after {
   content: "";
   width: 100%;
@@ -87,9 +82,7 @@ body {
 .productCarousel.carousel-root .carousel .thumb.selected:after {
   opacity: 0.2;
 }
-.productCarousel .control-arrow {
-  display: none;
-}
+
 @media screen and (max-width: 767px) {
   .productCarousel.carousel-root {
     flex-direction: column;

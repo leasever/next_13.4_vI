@@ -1,17 +1,10 @@
-import { Quotation } from "@/components/quotation/Form";
+import { FormDataQuotation, ProductQuotation } from "@/models/quotation.model";
 import { makePaymentRequest } from "@/utils/api";
 import { notifyError, notifySuccess } from "@/utils/notify-manager";
 
-export interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
-
 export interface Props {
-  formData: FormData;
-  quotationItems: Quotation[];
+  formData: FormDataQuotation;
+  quotationItems: ProductQuotation[];
 }
 
 export const sendMessaage = async ({ formData, quotationItems }: Props) => {
@@ -26,6 +19,7 @@ export const sendMessaage = async ({ formData, quotationItems }: Props) => {
     return true;
   } catch (error) {
     notifyError("No se pudo enviar");
+    console.log("error ", error);
     return false;
   }
 };

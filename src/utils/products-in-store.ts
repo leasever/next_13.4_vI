@@ -6,15 +6,13 @@ export function checkIfProductExists(
   product: number,
   items: CartItemInterface[]
 ) {
-  return items.find((item) => item.productId === product);
+  return items.find((item) => item.id === product);
 }
 
 export function useProductExistence(product: number) {
   const { quotationItems } = useSelector((state: RootState) => state.quotation);
-  const { cartItems } = useSelector((state: RootState) => state.cart);
 
-  const isProductInCart = checkIfProductExists(product, cartItems);
   const isProductInQuotation = checkIfProductExists(product, quotationItems);
 
-  return { isProductInCart, isProductInQuotation };
+  return { isProductInQuotation };
 }

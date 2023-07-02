@@ -1,5 +1,4 @@
 import { CartItemInterface } from "@/models/cart.model";
-import { updateCart } from "@/store/cart-slice";
 import { updateQuotation } from "@/store/quotation-slice";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -9,7 +8,7 @@ interface Props {
 }
 
 export default function Size({ data }: Props) {
-  const { productId, oneQuantityPrice, size: cartSize } = data;
+  const { id, size: cartSize, attributes } = data;
 
   const dispatch = useDispatch();
 
@@ -17,41 +16,54 @@ export default function Size({ data }: Props) {
     const payload = {
       key: type,
       val: value,
-      id: productId,
+      id: id,
     };
 
-    dispatch(
-      oneQuantityPrice > 0 ? updateCart(payload) : updateQuotation(payload)
-    );
+    dispatch(updateQuotation(payload));
   };
 
   const handleQuantityChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
     itemId: number,
-    itemVal: string
+    itemVal: string,
+    quotation_price?: number
   ) => {
     const newSize = Number(e.target.value);
     const updatedSize = cartSize.map((item) =>
-      item.id === itemId ? { ...item, quantity: newSize } : item
+      item.id === itemId
+        ? { ...item, quotation_price: item.quotation_price, quantity: newSize }
+        : item
     );
 
     const existingSize = updatedSize.find((item) => item.id === itemId);
     existingSize
       ? (existingSize.quantity = newSize)
-      : updatedSize.push({ id: itemId, quantity: newSize, val: itemVal });
+      : updatedSize.push({
+          id: itemId,
+          val: itemVal,
+          quantity: newSize,
+          quotation_price: quotation_price,
+        });
 
     updateCartItem("size", updatedSize);
   };
 
   return (
     <div className="flex flex-wrap gap-5">
-      {data.attributes.size.map((itemSize) => (
+      {attributes.product_sizes.data.map((itemSize) => (
         <div className="flex items-center gap-1" key={itemSize.id}>
-          <div className="font-semibold">{itemSize.val}</div>
+          <div className="font-semibold">{itemSize.attributes.val}</div>
           <select
             className="hover:text-black"
             value={cartSize.find((item) => item.id === itemSize.id)?.quantity}
-            onChange={(e) => handleQuantityChange(e, itemSize.id, itemSize.val)}
+            onChange={(e) =>
+              handleQuantityChange(
+                e,
+                itemSize.id,
+                itemSize.attributes.val,
+                itemSize.attributes.quotation_price
+              )
+            }
           >
             {[...Array(50)].map((_, i) => (
               <option key={i} value={i}>

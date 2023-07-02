@@ -1,39 +1,27 @@
+import { AttributesProduct } from "./product.model";
+
+
 export interface CartInterface {
   items: CartItemInterface[];
 }
 
 export interface CartItemInterface {
   size: SizeProd[];
-  name?: string;
-  oneQuantityPrice: number;
-  quantity: number;
-  productId: number;
-  attributes: Attributes2;
+  name: string;
+  quantity?: number;
+  id: number;
+  attributes: AttributesProduct;
+  quotation_price?: number;
 }
 
-interface Attributes2 {
-  name: string;
-  subtitle: string;
-  price: number;
-  description: string;
-  size: SizeProd[];
-  original_price: number;
-  slug: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  image: Size;
-  thumbnail: Thumbnail;
-  categories: Size;
-}
+
 
 export interface SizeProd {
   id: number;
   val: string;
-  price?: number;
-  quantity?: any;
+  quantity: number;
+  quotation_price?: number;
 }
-
 
 interface Thumbnail {
   data: Data;

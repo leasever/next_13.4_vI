@@ -38,11 +38,17 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
     <div className="w-full  flex-[1.5] max-w-[520px] mx-auto lg:mx-0">
       <div className="w-full  mx-auto sticky top-[50px]">
         <Carousel
+          className="productCarousel"
           showIndicators={false}
           showStatus={false}
           animationHandler="fade"
+          renderIndicator={() => null}
+          swipeable={false}
+          emulateTouch={false}
+          dynamicHeight={false}
+          centerMode={false}
+          showArrows={false}
           thumbWidth={50}
-          className="productCarousel"
           renderThumbs={() =>
             imageUrls.map((url, idx) => (
               <NextImage
@@ -54,11 +60,6 @@ const ProductDetailsCarousel: FC<Props> = ({ data }) => {
               />
             ))
           }
-          renderIndicator={() => null}
-          swipeable={false}
-          emulateTouch={false}
-          dynamicHeight={false}
-          centerMode={false}
         >
           {data.map((img, idx) => (
             <div className="w-full h-full  max-h-[650px] bg-white" key={idx}>
