@@ -10,19 +10,13 @@ export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
     },
     next: { revalidate: 5 },
   };
-  try {
-    const res = await fetch(`${API_URL}${endpoint}`, options);
-    if (!res.ok) {
-      notFound();
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    // Manejo del error
-    console.error("Error al realizar la solicitud:", error);
-    // Mostrar mensaje personalizado al usuario
+
+  const res = await fetch(`${API_URL}${endpoint}`, options);
+  if (!res.ok) {
     notFound();
   }
+  const data = await res.json();
+  return data;
 };
 
 export const makePaymentRequest = async (endpoint: string, payload: any) => {

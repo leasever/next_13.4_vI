@@ -10,5 +10,12 @@ export default function GlobalError({
   reset: () => void;
 }) {
   console.error("Error global: ", error);
-  return notFound();
+  return (
+    <>
+      error cause: {error.cause}
+      error name: {error.name}
+      error message {error.message}
+      error stack: {error.stack}
+    </>
+  );
 }
