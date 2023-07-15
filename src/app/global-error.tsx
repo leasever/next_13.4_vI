@@ -9,13 +9,9 @@ export default function GlobalError({
   error: Error;
   reset: () => void;
 }) {
-  console.error("Error global: ", error);
-  return (
-    <>
-      error cause: {error.cause}
-      error name: {error.name}
-      error message {error.message}
-      error stack: {error.stack}
-    </>
-  );
+  console.error(`error cause: ${error.cause}
+      error name: ${error.name}
+      error message: ${error.message}
+      error stack: ${error.stack}`);
+  return <>Hola aquí personalizamos el error de servidor strapi</>;
 }
