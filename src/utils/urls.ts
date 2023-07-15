@@ -1,9 +1,7 @@
 export const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-export const STRIPE_API_TOKEN = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
 export const API_URL =
-  process.env.NEXT_PUBLIC_STRAPI_API_URL ||
-  "https://quotation-api-serve.onrender.com";
+  process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
 export const CLIENT_URL =
   process.env.NEXT_PUBLIC_CLIENT_URL || "http://localhost:3000";

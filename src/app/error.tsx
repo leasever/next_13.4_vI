@@ -1,5 +1,4 @@
 "use client";
-import { notFound } from "next/navigation";
 
 const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
   console.error("Error interno: ", error);
