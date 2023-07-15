@@ -13,5 +13,5 @@ export default function GlobalError({
       error name: ${error.name}
       error message: ${error.message}
       error stack: ${error.stack}`);
-  return <>Hola aquí personalizamos el error de servidor strapi</>;
+  return;
 }
