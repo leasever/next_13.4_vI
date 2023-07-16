@@ -1,6 +1,6 @@
 "use client";
 
-import { notFound } from "next/navigation";
+import NotFoundCatchAll from "./[...not_found]/page";
 
 export default function GlobalError({
   error,
@@ -13,5 +13,5 @@ export default function GlobalError({
       error name: ${error.name}
       error message: ${error.message}
       error stack: ${error.stack}`);
-  return;
+  return NotFoundCatchAll();
 }
