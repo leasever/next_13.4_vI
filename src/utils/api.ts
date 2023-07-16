@@ -3,20 +3,25 @@ import { notFound } from "next/navigation";
 import { API_URL, OPENIA_URL, STRAPI_API_TOKEN } from "./urls";
 
 export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + STRAPI_API_TOKEN,
-    },
-    next: { revalidate: 5 },
-  };
+  try {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + STRAPI_API_TOKEN,
+      },
+      next: { revalidate: 5 },
+    };
 
-  const res = await fetch(`${API_URL}${endpoint}`, options);
-  if (!res.ok) {
-    notFound();
+    const res = await fetch(`${API_URL}${endpoint}`, options);
+    console.log("Error de fetchDataFromApi", res);
+    if (!res.ok) {
+      notFound();
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Error de fetchDataFromApi", error);
   }
-  const data = await res.json();
-  return data;
 };
 
 export const makePaymentRequest = async (endpoint: string, payload: any) => {
