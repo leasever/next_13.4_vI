@@ -1,16 +1,8 @@
 import { Products } from "@/models";
 import { fetchDataFromApi } from "@/utils/api";
-import { notFound } from "next/navigation";
-
-const validateData = (data: Products): Products => {
-  if (!data || data.data.length === 0) {
-    return notFound();
-  }
-  return data;
-};
 
 export const getProducts = (): Promise<Products> =>
-  fetchDataFromApi(`/api/products?populate=*`).then(validateData);
+  fetchDataFromApi(`/api/products?populate=*`);
 
 export const getRelatedProducts = (
   slug: string,
@@ -21,9 +13,7 @@ export const getRelatedProducts = (
   );
 
 export const getProduct = (slug: string): Promise<Products> =>
-  fetchDataFromApi(`/api/products?populate=*&filters[slug][$eq]=${slug}`).then(
-    validateData
-  );
+  fetchDataFromApi(`/api/products?populate=*&filters[slug][$eq]=${slug}`);
 
 export const getProductsPerCategory = (
   slug: string,
@@ -32,4 +22,4 @@ export const getProductsPerCategory = (
 ): Promise<Products> =>
   fetchDataFromApi(
     `/api/products?populate=*&filters[categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${maxResult}`
-  ).then(validateData);
+  );

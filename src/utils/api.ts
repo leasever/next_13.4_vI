@@ -1,5 +1,5 @@
 import { OpenAIStreamPayload } from "@/lib/openai-strem";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { API_URL, OPENIA_URL, STRAPI_API_TOKEN } from "./urls";
 
 export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
@@ -13,14 +13,13 @@ export const fetchDataFromApi = async (endpoint: string): Promise<any> => {
     };
 
     const res = await fetch(`${API_URL}${endpoint}`, options);
-    console.log("Error de fetchDataFromApi", res);
-    if (!res.ok) {
-      notFound();
-    }
+
     const data = await res.json();
+
     return data;
   } catch (error) {
-    console.log("Error de fetchDataFromApi", error);
+    console.log("Error of fetchDataFromApi", error);
+    redirect("/");
   }
 };
 

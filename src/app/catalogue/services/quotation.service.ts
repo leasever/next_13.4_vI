@@ -17,9 +17,14 @@ export const sendMessaage = async ({ formData, quotationItems }: Props) => {
     });
     notifySuccess("Cotización enviada con éxito");
     return true;
-  } catch (error) {
-    notifyError("No se pudo enviar");
-    console.log("error ", error);
+  } catch (error: any) {
+    if (error.message === "Failed to fetch") {
+      notifyError(
+        "No se pudo enviar, servidor en mantenimiento, mejoramos para brindarle un mejor servicio."
+      );
+    } else {
+      notifyError("No se pudo enviar");
+    }
     return false;
   }
 };

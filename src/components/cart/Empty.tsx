@@ -7,9 +7,9 @@ const Empty = () => {
     window.scrollTo(0, 0);
   }
   return (
-    <Wrapper className=" pt-10 ">
-      <div className="flex-[2] flex flex-col items-center   gap-3">
-        <div className="w-[260px] h-[260px]">
+    <Wrapper>
+      <div className="flex-[2] flex flex-col items-center   gap-5">
+        <div className="w-[250px] h-[250px]">
           <Image
             src="/empty-cart.png"
             width={250}

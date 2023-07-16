@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation"
+"use client";
+import { PageNotFound } from "@/lib/execptions";
 
 export default function NotFoundCatchAll() {
-  notFound()
+  throw new PageNotFound();
 }
