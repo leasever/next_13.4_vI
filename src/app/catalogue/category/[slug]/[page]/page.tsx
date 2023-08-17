@@ -1,4 +1,4 @@
-import { getCategory, getProductsPerCategory } from "@/app/catalogue/services";
+import { getCategory, getProductsPerCategory } from "@/services";
 import { CategoryProductsNotFound } from "@/lib/execptions";
 import { Category, Meta, Product } from "@/models";
 import { Metadata } from "next";

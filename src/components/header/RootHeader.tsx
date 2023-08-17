@@ -1,4 +1,4 @@
-import { getCategories } from "@/app/catalogue/services";
+import { getCategories } from "@/services";
 import Header from "./Header";
 
 export default async function RootHeader() {

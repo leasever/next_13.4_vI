@@ -1,4 +1,4 @@
-import { getCategories } from "../services";
+import { getCategories } from "../../../services";
 import Pagination from "../../../components/ui/PaginationButton";
 
 export default async function CategoriesPage() {

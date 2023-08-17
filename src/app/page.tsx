@@ -1,6 +1,6 @@
 import RootHomePage from "@/components/home/RootPageHome";
 import { Metadata } from "next";
-import { getCategories, getProducts } from "./catalogue/services";
+import { getCategories, getProducts } from "../services";
 
 export const metadata: Metadata = {
   title: "Consorcio A&C - Eléctrica S.A.C",

@@ -1,4 +1,4 @@
-import { getProduct, getRelatedProducts } from "@/app/catalogue/services";
+import { getProduct, getRelatedProducts } from "@/services";
 import RootProductPage from "@/components/product/RootProductPage";
 import { ProductNotFound } from "@/lib/execptions";
 import { Metadata } from "next";

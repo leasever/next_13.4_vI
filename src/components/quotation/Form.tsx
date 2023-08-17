@@ -3,11 +3,9 @@ import { clearQuotation } from "@/store/quotation-slice";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import TextareaAutosize from "react-textarea-autosize";
-import { sendMessaage } from "../../app/catalogue/services/quotation.service";
+import { sendMessaage } from "../../services/quotation.service";
 import { InputField } from "./InputField";
 import { FormDataQuotation, ProductQuotation } from "@/models/quotation.model";
-
-
 
 interface Props {
   quotationItems: ProductQuotation[];

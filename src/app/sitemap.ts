@@ -1,6 +1,6 @@
 import { Product } from "@/models";
 import { CLIENT_URL } from "@/utils/urls";
-import { getCategories, getProducts } from "./catalogue/services";
+import { getCategories, getProducts } from "../services";
 import { Category } from "@/models/categories.model";
 
 export default async function sitemap() {
