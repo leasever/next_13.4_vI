@@ -23,3 +23,6 @@ export const getProductsPerCategory = (
   fetchDataFromApi(
     `/api/products?populate=*&filters[categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${maxResult}`
   );
+
+export const getProductsBot = (): Promise<Products> =>
+  fetchDataFromApi(`/api/products`);

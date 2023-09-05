@@ -33,7 +33,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
     e.preventDefault();
     setLoading(true);
     const status = await sendMessaage({ formData, quotationItems });
-    // status && dispatch(clearQuotation());
+    status && dispatch(clearQuotation());
     setLoading(false);
   };
 
@@ -46,12 +46,12 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
         className="p-5 my-5 bg-black/[0.05] rounded-xl shadow-md"
       >
         <div className=" mb-4 text-md md:text-lg  font-medium text-black">
-          Ingresa tus datos para continuar con la cotización:
+          Ingrese sus datos para enviarle el comprobante:
         </div>
         <InputField
           id="name"
           name="name"
-          label="Nombre"
+          label="Nombre*"
           type="text"
           value={formData.name}
           onChange={handleChange}
@@ -62,7 +62,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
         <InputField
           id="email"
           name="email"
-          label="Email"
+          label="Email*"
           type="email"
           value={formData.email}
           onChange={handleChange}
@@ -72,7 +72,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
         <InputField
           id="phone"
           name="phone"
-          label="Teléfono"
+          label="Numero Whatsapp*"
           type="tel"
           value={formData.phone}
           onChange={handleChange}
@@ -86,7 +86,7 @@ const QuotationForm: React.FC<Props> = ({ quotationItems }) => {
             htmlFor="message"
             className="block mb-2 text-sm font-medium text-gray-700"
           >
-            Mensaje
+            Mensaje opcional
           </label>
           <TextareaAutosize
             id="message"

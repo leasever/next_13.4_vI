@@ -6,3 +6,6 @@ export const getCategories = (): Promise<Categories> =>
 
 export const getCategory = (slug: string): Promise<Categories> =>
   fetchDataFromApi(`/api/categories?filters[slug][$eq]=${slug}`);
+
+export const getCategoriesBot = (): Promise<Categories> =>
+  fetchDataFromApi(`/api/categories`);
